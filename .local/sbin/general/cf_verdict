@@ -1,0 +1,54 @@
+#!/bin/sh
+
+configdir="$HOME/.config/codeforces"
+
+while true
+do
+    if [[ -f "$configdir"/config ]]; then
+	source "$configdir"/config
+    else
+	exit 1
+    fi
+
+    # unix stamp time
+    time=$(date '+%s')
+
+    # 6 random digits
+    rand6=$(seq 9 | shuf -n 6 | xargs echo | sed "s/ //g")
+
+    # be careful. you must put the secret key and the method name at the end of the config file
+    # other parameters put them at the begining of the config file in any order you wish
+    hashed=$(printf '%s/%s?%s&time=%s#%s' "$rand6" "$method_name" "$(cat "$configdir"/config | sed "s/=/ /g; s/\"//g" | sed 3q | sort -h | sed "s/ /=/g" | xargs echo -n | sed "s/ /\&/g")" "$time" "$secretKey" | sha512sum | awk '{print $1}')
+
+    json=$(curl -s "https://codeforces.com/api/$method_name?handle=$handle&count=$count&apiKey=$apiKey&time=$time&apiSig=$rand6$hashed")
+    processed=$(echo "$json" | sed "s/,/\n/g; s/[{}\"]//g; s/:/ /g")
+
+    status=$(printf '%s' "$processed" | grep -i "status" | awk '{print $2 == "OK"}')
+    [[ $status != 1 ]] && continue
+
+    creation_time=$(printf '%s' "$processed" | grep -i "creation" | awk '{print $2}')
+    diff_time=$((time - creation_time))
+
+    verdict=$(printf '%s' "$processed" | grep -i "verdict" | awk '{print $2}' | xargs echo -n)
+    [[ $verdict = "OK" ]] && verdict="✅ Accepted"
+    [[ $verdict = "WRONG_ANSWER" ]] && verdict="❌ Wrong Answer"
+    [[ $verdict = "TIME_LIMIT_EXCEEDED" ]] && verdict="⭕ Time Limit Exceeded"
+    [[ $verdict = "RUNTIME_ERROR" ]] && verdict="⛔ Run Time Error"
+    [[ $verdict = "TESTING" ]] && verdict="🔃 Testing"
+    [[ -z $verdict ]] && verdict="⏳ Inqueue"
+
+    index=$(printf '%s' "$processed" | grep -i "index" | awk '{print $2}')
+    name=$(printf '%s' "$processed" | grep -i "name" | awk '{print $2, $3, $4, $5}')
+
+    if [[ $diff_time -lt 15 ]]; then
+	if [[ "$verdict" = "✅ Accepted" ]]; then
+	    notify-send -t 5000 "Codeforces" "$index.$name: $verdict"
+	elif [[ "$verdict" = "🔃 Testing" ]] || [[ "$verdict" = "⏳ Inqueue" ]]; then
+	    notify-send -u low -t 440 "Codeforces" "$index.$name: $verdict"
+	else
+	    notify-send -u critical -t 5000 "Codeforces" "$index.$name: $verdict"
+	fi
+    fi
+
+    sleep 0.5s
+done

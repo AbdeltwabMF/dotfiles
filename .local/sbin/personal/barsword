@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# print out the following fields:
+# ------------------------------
+# SSID:
+# Security:
+# Password:
+# QR Code
+
+nmcli dev wifi show-password

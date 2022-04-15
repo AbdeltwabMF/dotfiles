@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ICON=""
+signal=$(echo "$(nmcli device wifi list | grep "*" | sed -ne '1p' | awk '{print $8}')"%)
+[[ "${signal}" =~ ^[^0-9]*% ]] && ICON="📡"
+
+echo -e "${ICON}"
+
+case ${BUTTON} in
+  1) ! [[ "${signal}" =~ ^[^0-9]*% ]] && \
+		speed=$(speed-test -j);
+		notify-send -t 10000 "📡 Internet Speed Test" " : $(echo "${speed}" | jq '.["download"]') Mbit/s
+ : $(echo "${speed}" | jq '.["upload"]') Mbit/s
+Ping : $(echo "${speed}" | jq '.["ping"]') ms"
+		;;
+esac

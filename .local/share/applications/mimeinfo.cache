@@ -1,0 +1,3 @@
+[MIME Cache]
+x-scheme-handler/monero=monero-gui.desktop;
+x-scheme-handler/moneroseed=monero-gui.desktop;

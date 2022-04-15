@@ -1,0 +1,7 @@
+#!/bin/sh
+
+KBD_DIR="$HOME"/.config/x11/xkbd
+
+setxkbmap -layout ar
+
+[ -f "$KBD_DIR"/.Xmodmap_ar ] && xmodmap "$KBD_DIR"/.Xmodmap_ar

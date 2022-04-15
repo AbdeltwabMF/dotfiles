@@ -1,0 +1,38 @@
+#!/bin/bash
+
+state=$(acpi -b | sed "s/^.*: //g; s/%.*$//g; s/,.*$//g")
+percentage=$(acpi -b | sed "s/^.*: //g; s/%.*$//g; s/^.*, //g")
+
+notify_low() {
+  case "$1" in
+    25) notify-send -u low "Battery Info" \
+      "We ran out of energy!"
+          ;;
+    15) notify-send -u normal "Battery Info" \
+      "Come on! you have to do something, bro!"
+          ;;
+     5) notify-send -u critical "Battery Info" \
+       "Tesla is upset with you!"
+          ;;
+  esac
+}
+
+case "${state}" in
+  "Discharging") status="" ;;
+  "Charging") status="" ;;
+  "Not charging") status="" ;;
+  "Unknown") status="" ;;
+  "Full") status="⚡" ;;
+  "") status="⚡"; percentage="AC" ;;
+esac
+
+[[ "$state" == "Discharging" ]] && [[ "${percentage}" -lt 20 ]] && status=""
+[[ "${percentage}" != "AC" ]] && percentage="${percentage}%"
+
+notify_low percentage
+
+echo -e "$status $percentage"
+
+case ${BUTTON} in
+  1) notify-send "Battery Info" "$(acpi -iab | sed "s/^.*: //g; s/, /\n/g")" ;;
+esac

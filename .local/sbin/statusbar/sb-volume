@@ -1,0 +1,29 @@
+#!/bin/bash
+
+volume_up="🔊"
+volume_down="🔉"
+volume_off="🔇"
+
+volume_percentage=$(amixer sget Master | grep "[0-9]\+%" \
+  | sed "s/\[\|\]//g" | awk '{print $4}')
+is_muted=$(amixer sget Master | grep "[0-9]\+%" \
+  | sed "s/\[\|\]//g" | awk '{print $6}')
+
+# -eg -> equal
+# -lt -> lessthan
+# -gt -> greaterthan
+
+if [[ "$is_muted" != "on" ]] || [[ "$volume_percentage" = "0%" ]]; then
+  ICON=${volume_off}
+  # ${word/pattern/replacement}
+elif [[ "${volume_percentage//%/}" -lt 50 ]]; then
+  ICON=${volume_down}
+else
+  ICON=${volume_up}
+fi
+
+echo -e "${ICON} ${volume_percentage}"
+
+case ${BUTTON} in
+  1) setsid "${TERMINAL}" -e alsamixer ;;
+esac

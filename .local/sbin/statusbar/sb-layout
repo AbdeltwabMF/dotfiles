@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Display current keyboard layout
+
+readonly ICON=""
+
+get_layout() {
+	local layout
+	local ret
+	layout=$(setxkbmap -query | tr , ' ' | awk 'FNR == 3 {print $2}')
+
+	case "${layout}" in
+		ar) ret="ar" ;;
+		us) ret="us" ;;
+		*) us-layout; ret="us" ;;
+	esac
+
+	echo "${ret}"
+}
+
+echo "$ICON $(get_layout)"
+
+case "${BUTTON}" in
+	1) lo-toggle ;;
+esac

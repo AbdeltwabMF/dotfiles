@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Syncs repositories and downloads updates, meant to be run as a cronjob.
+
+ping -q -c 1 example.org 1>/dev/null 2>&1 || exit 1
+
+sudo pacman -Syyuuw --noconfirm 2>/dev/null || notify-send "$(sudo pacman -Syyuuw --noconfirm  2>&1)" && exit 1
+
+notify-send "📦 Repository Sync" "Checking for package updates..."
+
+pkill -RTMIN+8 "${STATUSBAR:-dwmblocks}"

@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Compile C++ programs py passing the source code file without extension
+
+cpl() {
+    g++ -Wall -Wextra -Wshadow -Og -g -Ofast -std=c++17 -pedantic -Wformat=2 -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wfloat-equal -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fno-sanitize-recover -fstack-protector -DDEBUG -ggdb3 -fsanitize=address,undefined -fmax-errors=2 -o "$1"{,.cpp}
+}
+
+cpl "$1"

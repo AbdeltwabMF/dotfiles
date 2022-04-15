@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xfburn-settings>
+	<setting name="vpaned-position" type="int" value="200"/>
+	<setting name="quit_after_success" type="boolean" value="false"/>
+	<setting name="show-filebrowser" type="boolean" value="false"/>
+	<setting name="main-window-height" type="int" value="622"/>
+	<setting name="main-window-width" type="int" value="932"/>
+	<setting name="show-toolbar" type="boolean" value="false"/>
+	<setting name="hpaned-position" type="int" value="250"/>
+</xfburn-settings>

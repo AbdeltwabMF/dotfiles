@@ -1,0 +1,37 @@
+!! Transparency (0.0 - 1.0):
+!! *.alpha: 0.89765
+
+!! black
+*.color0:       #2B2B2B
+*.color8:       #9E9E9E
+
+!! red
+*.color1:       #B40E0D
+*.color9:       #CB3736
+
+!! green
+*.color2:       #009514
+*.color10:      #38CF3E
+
+!! yellow
+*.color3:       #E3CE00
+*.color11:      #F0B22D
+
+!! blue
+*.color4:       #2F1AF4
+*.color12:      #0071E4
+
+!! magenta
+*.color5:       #9430B2
+*.color13:      #887FCF
+
+!! cyan
+*.color6:       #017096
+*.color14:      #00CAFF
+
+!! white
+*.color7:       #E6EDF9
+*.color15:      #FFC19A
+
+Xcursor.theme: phinger-cursors-light
+Xcursor.size:  32

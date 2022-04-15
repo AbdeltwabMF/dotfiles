@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Displays count of unread inbox and spam mails.
+
+ICON=""
+work_inbox_new=$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/Mail/Work/Inbox/new/* -type f 2>/dev/null | wc -l)
+work_spam_new=$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/Mail/Work/\[Gmail\]/Spam/new/* -type f 2>/dev/null | wc -l)
+
+uni_inbox_new=$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/Mail/Uni/Inbox/new/* -type f 2>/dev/null | wc -l)
+uni_spam_new=$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/Mail/Uni/Spambox/new/* -type f 2>/dev/null | wc -l)
+
+unread=$((work_inbox_new + work_spam_new + uni_inbox_new + uni_spam_new))
+
+# Notify on new mails
+mailnotify
+
+echo "${ICON} ${unread}"
+
+case "${BUTTON}" in
+  1) setsid -f "${TERMINAL}" -e neomutt ;;
+esac

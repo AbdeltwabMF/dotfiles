@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# randering screen to sutable scale
+
+rander() {
+	xrandr --output eDP1 --scale-from "$1" --panning "$1";
+	setbg
+}
+
+[[ $1 == "wide" ]] && rander "1920x1080"
+[[ $1 == "normal" ]] && rander "1366x768"

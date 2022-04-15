@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Download documnets(pdf, pics, txt, etc..) via wget tool
+# using http, https and ftp protocols
+
+readonly DOWNLOAD_DIR="${HOME}"/vault/dls/wget
+! [[ -d "${DOWNLOAD_DIR}" ]] && mkdir -p "${DOWNLOAD_DIR}"
+
+url=$(xclip -o | grep -E "(https|http|ftp)://.*.(png|cpp|c|py|csv|pdf|tex|html|js|php|css|svg|jpeg|jpg|gif|ttf|otf|vcf|xml|sql|db|dbf|tar|zip|diff|jar|rss|xhtml|ppt|pptx|pps|h|sh|xls|cfg|txt|doc|docx)")
+
+[[ -n "${url}" ]] && cd "${DOWNLOAD_DIR}" \
+	&& wget --hsts-file="${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts" "${url}"

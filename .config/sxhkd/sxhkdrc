@@ -1,0 +1,83 @@
+# XF86* keys
+XF86AudioMute
+  volume toggle
+
+XF86AudioLowerVolume
+  volume down
+
+XF86AudioRaiseVolume
+  volume up
+
+XF86MonBrightnessUp
+  brightness up
+
+XF86MonBrightnessDown
+  brightness down
+
+########################
+
+super + Return
+  $TERMINAL
+
+super + e
+  emacsclient -c
+
+super + { period, comma }
+  { screenkey&, killall screenkey }
+
+super + semicolon
+	lo-toggle
+
+super + d
+  dmenu_run
+
+super + { n, t, c, m, p, u, r, a }
+  $TERMINAL -e { nnn, htop, calc, neomutt, castero, ncmpcpp, newsboat, calcurse }
+
+super + ctrl + { k, e, j, n, m, d }
+  { dmenu_kill, dmenu_exit, dmenu_emoji, dmenu_man, dmenu_mount, dmenu_ytdl }
+
+super + shift + { q, Arabic_dad }
+  { closefocus, closefocus }
+
+super + alt + { p, b, z, g, e, l, t }
+  { pcmanfm, brave, zathura, gimp, emacs, librewolf, telegram-desktop }
+
+# Screen and webcam
+# Save screenshot to the screenshots dir and add it to the clipboard at the same time.
+Print
+  maim -B | tee ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+
+# Prompt for a region to screenshot. Add a fancy shadow to it, then save it with a unique ordered timestamp in the scshots dir and clipboard.
+super + Print; r
+  maim -sB | tee convert - \( +clone -background black -shadow 80x3+5+5 \) +swap -background none -layers merge +repage ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+
+# Screenshot selected window and save it to the clipboard for quick pasting as well as scshots dir.
+super + Print; s
+  maim -sB | tee ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+
+# Screenshot the active window and save it to the clipboard for quick pasting as well as scshots dir.
+#super + Print; a
+#  maim -u -i $(xdotool getactivewindow) | tee ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+
+super + Print; a
+	screenshot
+
+##################
+
+super + slash
+	mpc toggle
+
+# dunstctl shortcuts
+super + alt + d; { c, a, t, h, i, p }
+	dunstctl { close, close-all, context, history-pop, is-paused, set-paused "toggle"}
+
+
+super + alt + w
+  tabbed surf -e
+
+super + shift + Return;
+  tabbed -r 2 st -w ''
+
+super + shift + b
+  setbg

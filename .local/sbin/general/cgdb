@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dbg() {
+    (echo "start < input.in" && cat) | gdb -q "$1"
+}
+
+dbg "$1"

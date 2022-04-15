@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Emoji selector using the power of dmenu
+
+readonly EMOJIDIR="${XDG_DATA_HOME:-$HOME/.local/share}/unicode"
+
+cat "$EMOJIDIR"/emojis \
+	| dmenu -l 15 -p "Choose an Emoji" \
+	| cut -d' ' -f1 | xclip -selection clipboard -i
+
+[[ -n "$(xclip -selection clipboard -o)" ]] && notify-send "Unicode" "$(xclip -selection clipboard -o) has been copied."

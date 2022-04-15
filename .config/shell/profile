@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+#
+# ~/.profile
+#
+
+# profile file. Runs on login. Environmental variables are sourced here.
+
+# Environmental variables
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env"
+
+mpd
+ssh-add
+
+if pacman -Qs libxft-bgra >/dev/null 2>&1; then
+  # Start graphical server on user's current tty if not already running.
+  [[ "$(tty)" = "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "${XINITRC}"
+else
+  echo "Oops.. something went wrong!"
+fi

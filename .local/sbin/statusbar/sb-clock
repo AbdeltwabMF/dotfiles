@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# FOR UNICODE ONLY
+# get current time
+# icon=$(date '+%I')
+
+# case "$icon" in
+#     "00") icon="🕛" ;;
+#     "01") icon="🕐" ;;
+#     "02") icon="🕑" ;;
+#     "03") icon="🕓" ;;
+#     "04") icon="🕔" ;;
+#     "05") icon="🕔" ;;
+#     "06") icon="🕕" ;;
+#     "07") icon="🕖" ;;
+#     "08") icon="🕗" ;;
+#     "09") icon="🕘" ;;
+#     "10") icon="🕙" ;;
+#     "11") icon="🕚" ;;
+#     "12") icon="🕛" ;;
+# esac
+
+ICON=""
+time=$(date +"%I:%M %p")
+
+echo -e "$ICON $time"
+
+case  ${BUTTON} in
+  1) notify-send "This Month" "$(cal --color=always \
+    | sed "s/..7m/<b><span color=\"red\">/;s/..27m/<\/span><\/b>/")" \
+    && notify-send "Appointments" "$(calcurse -d3)"
+    ;;
+  2) setsid -f "$TERMINAL" -e calcurse ;;
+esac

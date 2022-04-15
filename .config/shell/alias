@@ -1,0 +1,146 @@
+#!/bin/bash
+#
+# ~/.alias
+#
+
+# XDG Base Directory || Clean up
+alias \
+  wget='wget --hsts-file="${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"' \
+  yarn='yarn --use-yarnrc "${XDG_CONFIG_HOME:-$HOME/.config}/yarn/config"' \
+  svn='svn --config-dir "${XDG_CONFIG_HOME:-$HOME/.config}/subversion"' \
+  monerod='monerod --data-dir "${XDG_DATA_HOME:-$HOME/.local/share}/bitmoner"' \
+  irssi='irssi --home="${XDG_CONFIG_HOME:-$HOME/.config}"/irssi'
+
+# Use neovim for vim if present.
+[[ -x "$(command -v nvim)" ]] && alias vim="nvim" vimdiff="nvim -d"
+
+declare -a sbin
+sbin=( netstat mount umount sv su pacman updatedb
+reboot intel_gpu_top docker poweroff vnstat aireplay-ng
+airodump-ng aircrack-ng airmon-ng );
+
+# sudo not required for some system commands
+for ((i = 1; i <= ${#sbin[@]}; i++)); do
+  command="${sbin[$i]}"
+  alias ${sbin[$i]}="sudo ${command}"
+done;
+
+# Colorize commands when possible.
+alias \
+	grep="grep --color=auto" \
+	diff="diff --color=auto"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	trem="transmission-remote" \
+	v="nvim" \
+	z="zathura" \
+	l="lsd -a" \
+	ll="lsd -alh" \
+	lll="lsd --tree" \
+	xco="xclip -o" \
+	xci="xclip -i -selection clipboard" \
+	pdf2png="pdftoppm -singlefile -png" \
+	pdf2pngs="pdftoppm -png" \
+	drdr="dragon-drag-and-drop" \
+	fnsr="fc-list | grep -i "
+
+# Youtube-dl
+# Download single video
+yt() {
+  youtube-dl -i --add-metadata -o "$HOME/vault/dls/Videos/%(title)s.%(ext)s" "$@"
+}
+
+# Download YouTube playlist videos in separate directory indexed by video order in a playlist
+ytpl() {
+  youtube-dl -i --add-metadata -o "$HOME/vault/dls/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
+}
+
+# Download audio Only
+ytx() {
+  youtube-dl -x --audio-format "mp3" -i --add-metadata --embed-thumbnail -o "$HOME/vault/ods/Music/%(title)s.%(ext)s" "$@"
+}
+
+# Downloading a portion of video
+# -ss --> start time 00:02:00.00
+# -to --> end time   00:03:00.00
+# make sure that you use the correct format time 00:00:00.00
+ytp() {
+  ffmpeg -ss "$1" -to "$2" -i "$(youtube-dl -f best -i --add-metadata --get-url "$3")" "$HOME/vault/dls/Videos/""$(youtube-dl --get-title "$3")".mp4
+}
+
+# copy working directory
+alias \
+  cwd='pwd | tr -d "\r\n" | xclip -selection clipboard' \
+  cp='cp -iv' \
+  mv='mv -iv' \
+  untar='tar xvf'
+
+# Pipe my public key to my clipboard.
+alias pubgpg="gpg --export --armor abdeltwab.m.fakhry@protonmail.com | xclip -i -selection clipboard | echo '=> Public key copied to pasteboard.'"
+alias pubssh="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> Public key copied to pasteboard.'"
+
+# to backup a directory:
+bkup() {
+	tar cf - "${1}" | 7za a -si "${1}.tar.7z"
+}
+
+# to restore your backup:
+rstr() {
+	7za x -so "${1}" | tar xf -
+}
+
+# Super linter powered by docker
+slint() {
+	docker container run -e RUN_LOCAL=true -v "$1":/tmp/lint github/super-linter
+}
+
+# ex - archive extractor
+# usage: ex <file>
+ex () {
+  if [[ -f $1 ]]; then
+    case "$1" in
+      *.tar.bz2) tar xjf "$1" ;;
+      *.tar.gz) tar xzf "$1" ;;
+      *.bz2) bunzip2 "$1" ;;
+      *.rar) unrar x "$1" ;;
+      *.gz) gunzip "$1" ;;
+      *.tar) tar xf "$1" ;;
+      *.tbz2) tar xjf "$1" ;;
+      *.tgz) tar xzf "$1" ;;
+      *.zip) unzip "$1" ;;
+      *.Z) uncompress "$1" ;;
+      *.tar.7z) rstr "$1" ;;
+      *.7z) 7z x "$1" ;;
+      *.tar.7z.gpg) dec "$1" ;;
+      *) echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Maven
+# Instantiate a new JavaSE Maven project
+# Usage: mvnse <artifact-id> <group-id>
+mvnse() {
+	mvn archetype:generate \
+    -DartifactId="${1:-test}" \
+    -DgroupId="${2:-amf}" \
+    -DarchetypeArtifactId=maven-archetype-quickstart \
+    -DarchetypeVersion=1.4 \
+    -DinteractiveMode=false
+}
+
+# Instantiate a new JavaFX application Maven project
+# Usage: mvnfx <artifact-id> <group-id>
+mvnfx() {
+  mvn archetype:generate \
+    -DarchetypeGroupId=org.openjfx \
+    -DarchetypeArtifactId=javafx-archetype-simple \
+    -DarchetypeVersion=0.0.3 \
+    -DartifactId="${1:-test}" \
+    -DgroupId="${2:-amf}" \
+    -Dversion=1.0.0 \
+    -Djavafx-version=11
+}

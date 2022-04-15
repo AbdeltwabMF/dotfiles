@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Display how many packages need approval to be update
+
+ICON=""
+packages=$(sudo pacman -Qu | grep -Fcv "[ignored]")
+
+echo -e "${ICON} ${packages}"
+
+case ${BUTTON} in
+  1) setsid -f "${TERMINAL}" -e sudo pacman -Su --noconfirm ;;
+esac

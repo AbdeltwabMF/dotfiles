@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# bright_level=$(awk '{print int($1 / 4794.0 * 100)}' /sys/class/backlight/intel_backlight/brightness)
+
+ICON=""
+brightness_level=$(xbacklight -get | xargs printf "%.0f\n")
+
+echo -e "${ICON} ${brightness_level}%"
+
+case ${BUTTON} in
+  1)
+  case "$(echo -e "extra_soft\nsoft\nmedium\nhard\nextra_hard" | dmenu -p "Choose brightness mode:")" in
+    extra_soft) xbacklight -set 10 ;;
+    soft) xbacklight -set 20 ;;
+    medium) xbacklight -set 30 ;;
+    hard) xbacklight -set 40 ;;
+    extra_hard) xbacklight -set 50 ;;
+  esac
+  ;;
+esac

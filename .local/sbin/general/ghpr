@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Make a GitHub Pull Request from upstream link, assuming it's exist
+# in the form of `https:` not `SSH -> git@github:`
+# to add upstream in the form of https: copy the link of the repository from github and:
+#
+# git remote add upstream `https://github.com/AbdeltwabMF/artixrice.git`
+
+readonly GITHUB_USERNAME=abdeltwabmf
+
+# feed the script the destination branch or it will be main.
+[[ -n "$1" ]] && dest_branch="$1" || dest_branch=main
+
+upstream_url=$(git remote -v | awk '/upstream.*(fetch)/ {print $2}')
+upstream_url_tailed=$(echo "${upstream_url}" | sed -E 's|....$|/compare/|g')
+branch_name=$(git symbolic-ref HEAD | awk -F/ '{print $3}')
+
+# URL for a PRs
+pr_url="${upstream_url_tailed}${dest_branch}...${GITHUB_USERNAME}:${branch_name}"
+
+$BROWSER "${pr_url}"

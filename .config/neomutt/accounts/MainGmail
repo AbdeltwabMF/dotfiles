@@ -1,0 +1,25 @@
+# vim: filetype=muttrc
+
+unmailboxes *
+
+# in/out mail servers
+set realname	= "Abd El-Twab M. Fakhry"
+set folder 	= "imaps://abdeltwab.m.fakhry@gmail.com@imap.gmail.com:993"
+set imap_pass 	= `pass show MailProvider/Gmail/apw/abdeltwab.m.fakhry@gmail.com`
+set smtp_url 	= "smtps://abdeltwab.m.fakhry@gmail.com@smtp.gmail.com:465"
+set smtp_pass 	= `pass show MailProvider/Gmail/apw/abdeltwab.m.fakhry@gmail.com`
+
+set from 	= "abdeltwab.m.fakhry@gmail.com"
+set spoolfile 	= "+Inbox"
+set record 	= "+Sent"
+set trash 	= "+Trash"
+set postponed 	= "+Drafts"
+set mail_check 	= 10
+set use_from 	= "yes"
+set envelope_from
+
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300

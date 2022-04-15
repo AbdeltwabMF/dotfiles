@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# Notify with the number of new messages whenever mail has been retrieved.
+
+export DISPLAY=":0.0"
+source "${HOME}"/.dbus/session-bus/*-0
+
+readonly ICON="/usr/share/icons/Adwaita/256x256/legacy/mail-message-new.png"
+readonly PREFIX="/home/amf/.local/share/Mail/"
+
+declare -a locations=(
+"Work/Inbox/new"
+"Work/[Gmail]/Spam/new"
+"Uni/Inbox/new"
+"Uni/Spambox/new"
+)
+
+declare -a messages_time=()
+for ((i = 0; i < ${#locations[@]}; ++i)); do
+	tmp=($(ls ${PREFIX}"${locations[i]}" | awk -F. '{print $1}'))
+
+	for ((j = 0; j < ${#tmp[@]}; ++j)); do
+		messages_time+=("${tmp[j]}")
+	done
+done
+
+IFS=$'\n' sorted=($(sort -h <<<"${messages_time[*]}"))
+unset IFS
+
+notify() {
+	notify-send "You have $1 new mails" -i "${ICON}" -t 30000
+}
+
+search() {
+	local low=0
+	local high=${#sorted[@]}
+	local unix_time
+	unix_time=$(($1 - 20))
+	local answer=-1
+
+	while ((low < high)); do
+		mid=$(((low + high) / 2))
+		if (( sorted[mid] >= unix_time )); then
+			high=$((mid))
+			answer=$((mid))
+		else
+			low=$((mid + 1))
+		fi
+	done
+
+	if (( answer < 0 )); then
+		exit 0
+	else
+		local new
+		new=$((${#sorted[@]} - answer))
+		notify "${new}"
+	fi
+}
+
+search "$(date '+%s')"

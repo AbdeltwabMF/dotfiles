@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+#
+
+name=$(echo $1 | sed "s|^.*/||g; s|.git||g")
+readonly CUR_DIR=$(pwd)/${name}
+
+if [[ -d "${CUR_DIR}" ]]; then
+    cd "${CUR_DIR}" || exit 1
+else
+    mkdir "${CUR_DIR}" && cd "${CUR_DIR}" || exit 1
+fi
+
+git init "${CUR_DIR}"
+echo "# ${name}" >> ${CUR_DIR}/README.md
+
+git add README.md
+git commit -m "Add README"
+git branch -M main
+git remote add origin "$1"
+git push -f -u origin main

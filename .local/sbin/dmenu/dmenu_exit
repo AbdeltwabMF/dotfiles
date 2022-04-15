@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Logout, reboot or shutdown using the power of dmenu
+
+choice=$(echo -e "Screensaver\nLogout\nReboot\nShutdown" | dmenu -p "We're sorry to see you go :(")
+[[ ${choice} == "" ]] && exit 0
+
+confirm=$(echo -e "No\nYes" | dmenu -p "Are you sure you wanna ${choice}?")
+regexp="(^No$)|(^$)"
+[[ ${confirm} =~ ${regexp} ]] && exit 0
+
+xdg-screensaver reset
+
+case "$choice" in
+  Reboot) sudo reboot ;;
+  Shutdown) sudo poweroff ;;
+  Logout)
+		xdg-screensaver activate;
+		slock -m "Locked at $(date "+%A %d, %I:%M:%S %p")" us-layout
+		;;
+	Screensaver) xdg-screensaver activate ;;
+esac

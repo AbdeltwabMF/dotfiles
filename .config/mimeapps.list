@@ -1,0 +1,40 @@
+[Default Applications]
+image/png=image.desktop
+image/jpeg=image.desktop
+image/jpg=image.desktop
+video/x-matroska=media.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop
+text/x-c=text.desktop
+application/pdf=pdf.desktop
+text/plain=text.desktop
+application/x-sqlite3=database.desktop
+video/webm=media.desktop
+video/mp4=media.desktop
+video/mp3=media.desktop
+video/ogg=media.desktop
+audio/mpegapplication/octet-stream=media.desktop
+text/x-c++=text.desktop
+application/json=text.desktop
+text/xml=text.desktop
+text/x-shellscript=text.desktop
+application/x-7z-compressed=archive.desktop
+x-scheme-handler/mailto=xfce4-mail-reader.desktop
+.Xauthority=text.desktop
+x-scheme-handler/webcal=brave-browser.desktop
+text/html=text.desktop
+x-scheme-handler/magnet=userapp-transmission-gtk-52L4C1.desktop
+application/octet-stream=media.desktop
+x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
+x-scheme-handler/kite=kite-copilot.desktop
+image/x-portable-pixmap=sxiv.desktop
+x-scheme-handler/discord-668477264995811338=nuclear.desktop
+text/x-java=text.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop;
+x-scheme-handler/magnet=userapp-transmission-gtk-52L4C1.desktop;
+text/plain=org.xfce.mousepad.desktop;
+x-scheme-handler/mailto=xfce4-mail-reader.desktop;
+application/octet-stream=text.desktop;mpv.desktop;
+image/png=org.xfce.ristretto.desktop;sxiv.desktop;
+image/x-portable-pixmap=sxiv.desktop;

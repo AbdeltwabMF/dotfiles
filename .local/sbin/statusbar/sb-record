@@ -1,0 +1,9 @@
+#!/bin/bash
+
+record_icon=$(cat /tmp/recordingicon)
+
+echo -e "${record_icon}"
+
+case ${BUTTON} in
+  1) dmenu_record ;;
+esac

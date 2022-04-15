@@ -1,0 +1,6 @@
+# vimrc = cfg
+
+set default-fg "#6C115A"
+set default-bg "#F0D766"
+set selection-clipboard clipboard
+set font "Fantasque Sans Mono 10"

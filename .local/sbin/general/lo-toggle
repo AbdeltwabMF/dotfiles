@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Toggle the keyboard layout between arabic and english
+
+update_sb="pkill -RTMIN+14 dwmblocks"
+
+toggle() {
+	local cur_layout
+	cur_layout=$(setxkbmap -query | tr , ' ' | awk 'FNR == 3 {print $2}')
+
+	case "${cur_layout}" in
+		"us") ar-layout; ${update_sb} ;;
+		"ar") us-layout; ${update_sb} ;;
+	esac
+}
+
+toggle

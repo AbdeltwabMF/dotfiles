@@ -1,0 +1,10 @@
+#!/bin/bash
+
+wifi=$(nmcli dev wifi list | dmenu -l 10 -p "Choose wifi to connect:")
+
+ishidden=$(printf "%s\n%s" "yes" "no" | dmenu -l 5 -p "Is wifi hidden?")
+[[ -n "$ishidden" ]] && ishidden="hidden $ishidden"
+
+bssid=$(echo "$wifi" | awk '{print $1}')
+
+nmcli dev wifi connect "$bssid" "$ishidden" >/dev/null 2>&1

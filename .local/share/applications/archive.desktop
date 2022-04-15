@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=File Archiver
+Exec=/usr/bin/7za x %f

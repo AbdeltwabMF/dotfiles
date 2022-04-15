@@ -1,0 +1,6 @@
+.#*
+*.d
+*.kbx*
+*.gpg
+random_seed
+sshcontrol

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ICON=""
+used=$(df -h | grep '/home$' | awk '{print $5}')
+
+echo -e "$ICON $used"
+
+case ${BUTTON} in
+  1) notify-send -t 30000 "Biggest home hogs:" \
+    "$(du -h ${HOME} -d 1 2>/dev/null \
+      | sort -hr | sed 17q | sed -ne '1,2!p' \
+      | awk 'BEGIN { printf "%-40s %s\n", "Dir:", "Size:";
+        printf "%-40s %s\n", "----", "-----" }
+        { printf "%-40s %s\n", $2$3$4$5$6$7$8$9, $1 "%" }')"
+    ;;
+esac

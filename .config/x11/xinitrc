@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+#
+# ~/.xinitrc
+#
+
+# Executed by startx (run your window manager from here)
+
+# There are some small but important commands that need to be run when we start
+# the graphical environment. There is a link to this file in ~/.xprofile
+# because that file is run automatically if someone uses a display manager
+# (login screen) and so they are needed there. To prevent doubling up commands,
+# I source them here with the line below.
+
+if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]]; then
+  . "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+else
+  . "$HOME/.xprofile"
+fi
+
+session=$1
+[[ -z "$session" ]] && session=dwm
+
+# Start Window Manager here
+case ${session} in
+    i3|i3wm) exec i3 ;;
+    kde) exec startplasma-x11 ;;
+    xfce|xfce4) exec startxfce4 ;;
+		dwm)
+      exec ${STATUSBAR} &
+      exec dwm
+      ;;
+    # No known session, try to run it as command
+    *) exec "$1" ;;
+esac

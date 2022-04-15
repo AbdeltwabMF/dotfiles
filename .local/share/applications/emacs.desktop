@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Extensible Text Editor
+Exec=/usr/bin/emacs %u

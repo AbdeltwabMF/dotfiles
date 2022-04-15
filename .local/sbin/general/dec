@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# DECRYPTED_DATA_DIR=""
+
+[ "$1" = "" ] && echo "No such a file or directory!" && exit 1
+
+decrypt_for_home() {
+  gpg -d "$1" > $(echo $1 | sed "s/.gpg//g")
+  7za x -so $(echo $1 | sed "s/.gpg//g") | tar xf -
+  rm -rf $(echo $1 | sed "s/.gpg//g")
+  rm -rf "$1"
+}
+
+decrypt_for_home "$@"

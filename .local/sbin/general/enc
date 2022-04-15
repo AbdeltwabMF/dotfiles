@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# ENCRYPTED_DATA_DIR=""
+
+[ "$1" = "" ] && echo "No such a file or directory!" && exit 1
+
+encrypt_for_git() {
+  tar cf - "$1" | 7za a -si "$1".tar.7z
+  gpg -er $(gpg -k | grep 'ry (pw) <a' | sed "s/^.*<\|>//g") "$1".tar.7z
+  rm -rf "$1".tar.7z
+}
+
+encrypt_for_git "$@"

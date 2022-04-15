@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ICON=""
+utilization=$(sar -u 1 1 | awk 'FNR == 5 { printf "%05.2f\n", (100.0 - $8) }')
+
+echo -e "$ICON $utilization%"
+
+case ${BUTTON} in
+  1) notify-send "Biggest CPU hogs:" \
+    "$(ps axch -o %cpu,cmd --sort=-%cpu \
+    | sed 11q | awk 'BEGIN { printf "%-30s %s\n", "Process:", "Usage:";
+      printf "%-30s %s\n", "--------", "------" }
+      { printf "%-30s %s\n", $2, $1 "%" }')"
+    ;;
+esac

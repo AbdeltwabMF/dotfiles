@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Database Management System
+Exec=st -e sqlite3 %u

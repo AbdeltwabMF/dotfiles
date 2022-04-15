@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+#
+
+readonly KBD_DIR="$HOME"/.config/x11/xkbd
+setxkbmap -layout us
+
+[[ -f "$KBD_DIR"/.Xmodmap_us ]] && xmodmap "${KBD_DIR}"/.Xmodmap_us

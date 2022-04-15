@@ -1,0 +1,12 @@
+clear Lock
+clear mod2
+
+remove mod4 = Hyper_L
+remove mod5 = ISO_Level3_Shift
+
+add mod2 = Caps_Lock
+add mod3 = Hyper_L
+
+keycode 66  = Escape
+keycode 9 = Hyper_L
+keycode 108 = Caps_Lock

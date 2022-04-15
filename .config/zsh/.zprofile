@@ -1,0 +1,1 @@
+/home/amf/.config/shell/profile

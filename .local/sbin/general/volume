@@ -1,0 +1,12 @@
+#!/bin/bash
+
+update_sb="pkill -RTMIN+6 dwmblocks"
+
+case "$1" in
+	up)
+		amixer set Master "1.74dB+"; ${update_sb} ;;
+	down)
+		amixer set Master "1.74dB-"; ${update_sb} ;;
+	toggle)
+		amixer set Master toggle; ${update_sb} ;;
+esac

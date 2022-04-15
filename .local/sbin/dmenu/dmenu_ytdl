@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+# Watch or Download an online video or audio
+# using youtube-dl and mpv combined as a backend
+# using dmenu as a frontend
+
+TMP_DIR="/tmp/dmenu_ytdl"
+date=$(date +"%Y.%m.%d %I:%M:%S %p %A")
+
+yt-mpv() {
+	case "$1" in
+		# for better quality (1280x720) pass 22 instead of 18, for the best do not pass anything.
+		22) setsid mpv --ytdl-format=22 "$(xclip -o)" ;;
+		18) setsid mpv --ytdl-format=18 "$(xclip -o)" ;;
+		*) setsid mpv "$(xclip -o)" ;;
+	esac
+}
+
+# Download audio Only
+yt-audio() {
+	setsid "${TERMINAL}" -e youtube-dl -x --audio-format "mp3" -i --add-metadata --embed-thumbnail \
+		-o "$HOME/vault/ods/Music/%(title)s.%(ext)s" "$(xclip -o)"
+}
+
+# Download single video
+yt-video() {
+	setsid "${TERMINAL}" -e youtube-dl -f 22 -i --add-metadata \
+		-o "$HOME/vault/vds/Videos/%(title)s.%(ext)s" "$(xclip -o)"
+}
+
+# Download YouTube playlist videos in separate directory indexed by video order in a playlist
+yt-plist() {
+	setsid "${TERMINAL}" -e youtube-dl -f 22 -i --add-metadata \
+		-o "$HOME/vault/vds/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$(xclip -o)"
+}
+
+choice=$(echo -e "Watch\nAudio-dl\nVideo-dl\nPlaylist-dl" \
+	| dmenu -p "What you're gonna do with this media link?")
+[[ "${choice}" = "Watch" ]] && format=$(echo -e "22\n18" \
+	| dmenu -p "Which Format?")
+
+case "${choice}" in
+	Watch) yt-mpv "${format}" ;;
+	Audio-dl) yt-audio ;;
+	Video-dl) yt-video ;;
+	Playlist-dl) yt-plist ;;
+esac
+
+# TODO: Log URL and time of download to be inspected later

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dbc() {
+    gdb --tui -q "$1" -ex "run < input.in"
+}
+
+dbc "$1"

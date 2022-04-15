@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Search man pages using the power of dmenu!
+
+choice=$(apropos . | dmenu -l 15 -p "Choose a page:" | cut -d ' ' -f1)
+
+[[ -z "${choice}" ]] && exit 1
+
+setsid st -e man "${choice}"

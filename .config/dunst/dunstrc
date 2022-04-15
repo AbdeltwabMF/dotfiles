@@ -1,0 +1,65 @@
+# vim: ft=cfg
+
+[global]
+    monitor = 0
+    follow = keyboard
+
+    origin = top-right
+		width = (0, 683)
+		height = 375
+		offset = 0x18
+
+		notification_limit = 3
+    indicate_hidden = true
+
+    transparency = 20
+
+    separator_height = 8
+		separator_color = "#FFDD23"
+    padding = 8
+    horizontal_padding = 8
+
+		frame_width = 2
+
+		sort = true
+
+    idle_threshold = 99
+
+		font = Fantasque Sans Mono 14
+
+    line_height = 0
+    markup = full
+
+    format = "<b>%s</b>\n\n%b"
+
+    # icon_path = /usr/share/icons/Adwaita/256x256/status/:/usr/share/icons/Adwaita/256x256/places:/usr/share/icons/Adwaita/256x256/legacy/:/usr/share/icons/Adwaita/256x256/mimetypes
+
+    alignment = left
+
+		history_length = 32
+		dmenu = "/usr/local/bin/dmenu -p dunst"
+    browser = "/usr/bin/xdg-open"
+    show_age_threshold = 60
+
+    always_run_script = true
+
+    title = Dunst
+    class = Dunst
+
+[urgency_low]
+    background = "#3F333D"
+    foreground = "#FFFFF2"
+    frame_color = "#FABDA9"
+    timeout = 10
+
+[urgency_normal]
+    background = "#0F0664"
+    foreground = "#FFFFF1"
+    frame_color = "#9ABDEF"
+    timeout = 15
+
+[urgency_critical]
+    background = "#CC2421"
+    foreground = "#EBDBB2"
+    frame_color = "#FABD2F"
+    timeout = 0
