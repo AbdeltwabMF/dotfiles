@@ -30,13 +30,13 @@
 	path = .local/opt/suckless/dmenu
 	url = git@github.com:AbdeltwabMF/dmenu.git
 
-[submodule ".local/sbin/general/autorice-bootstrapping"]
-	path = .local/sbin/general/autorice-bootstrapping
-	url = git@github.com:AbdeltwabMF/autorice-bootstrapping.git
-
 [submodule ".local/share/wallpapers"]
 	path = .local/share/wallpapers
 	url = git@github.com:AbdeltwabMF/wallpapers.git
 [submodule ".local/opt/peda"]
 	path = .local/opt/peda
 	url = https://github.com/longld/peda.git
+
+[submodule ".local/sbin"]
+	path = .local/sbin
+	url = git@github.com:AbdeltwabMF/scripts.git
