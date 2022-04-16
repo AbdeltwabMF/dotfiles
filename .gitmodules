@@ -33,6 +33,7 @@
 [submodule ".local/share/wallpapers"]
 	path = .local/share/wallpapers
 	url = git@github.com:AbdeltwabMF/wallpapers.git
+
 [submodule ".local/opt/peda"]
 	path = .local/opt/peda
 	url = https://github.com/longld/peda.git

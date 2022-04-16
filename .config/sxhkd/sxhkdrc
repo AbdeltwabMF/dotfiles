@@ -46,19 +46,19 @@ super + alt + { p, b, z, g, e, l, t }
 # Screen and webcam
 # Save screenshot to the screenshots dir and add it to the clipboard at the same time.
 Print
-  maim -B | tee ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+  maim -B | tee ~/vault/pictures/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
 
 # Prompt for a region to screenshot. Add a fancy shadow to it, then save it with a unique ordered timestamp in the scshots dir and clipboard.
 super + Print; r
-  maim -sB | tee convert - \( +clone -background black -shadow 80x3+5+5 \) +swap -background none -layers merge +repage ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+  maim -sB | tee convert - \( +clone -background black -shadow 80x3+5+5 \) +swap -background none -layers merge +repage ~/vault/pictures/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
 
 # Screenshot selected window and save it to the clipboard for quick pasting as well as scshots dir.
 super + Print; s
-  maim -sB | tee ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+  maim -sB | tee ~/vault/pictures/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
 
 # Screenshot the active window and save it to the clipboard for quick pasting as well as scshots dir.
 #super + Print; a
-#  maim -u -i $(xdotool getactivewindow) | tee ~/vault/pix/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
+#  maim -u -i $(xdotool getactivewindow) | tee ~/vault/pictures/screenshots/"$(date +"%Y.%m.%d %I:%M:%S %p %A")".png | xclip -selection clipboard -t image/png
 
 super + Print; a
 	screenshot
