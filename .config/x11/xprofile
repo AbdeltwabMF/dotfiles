@@ -24,4 +24,4 @@ xidlehook --detect-sleep --not-when-fullscreen --timer 900 "slock -m 'Allah is a
 
 # invoke emacsclient -c with flag -c to create a new frame instead of trying  to  use  the  current  Emacs frame
 # however when you done with emacs frame you should kill it using `C-x 5 0` instead of `MOD+Shift+q` OR `C-x C-c`
-emacs --daemon          # emacs server
+# emacs --daemon          # emacs server
