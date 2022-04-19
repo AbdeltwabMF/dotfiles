@@ -1,43 +1,36 @@
 [submodule ".config/emacs"]
 	path = .config/emacs
 	url = git@github.com:AbdeltwabMF/emacs-rice.git
-
 [submodule ".local/opt/suckless/dwm"]
 	path = .local/opt/suckless/dwm
 	url = git@github.com:AbdeltwabMF/dwm.git
-
 [submodule ".local/opt/suckless/dwmblocks"]
 	path = .local/opt/suckless/dwmblocks
 	url = git@github.com:AbdeltwabMF/dwmblocks.git
-
 [submodule ".local/opt/suckless/st"]
 	path = .local/opt/suckless/st
 	url = git@github.com:AbdeltwabMF/st.git
-
 [submodule ".local/opt/suckless/slock"]
 	path = .local/opt/suckless/slock
 	url = git@github.com:AbdeltwabMF/slock.git
-
 [submodule ".local/opt/suckless/surf"]
 	path = .local/opt/suckless/surf
 	url = git@github.com:AbdeltwabMF/surf.git
-
 [submodule ".local/opt/suckless/tabbed"]
 	path = .local/opt/suckless/tabbed
 	url = git@github.com:AbdeltwabMF/tabbed.git
-
 [submodule ".local/opt/suckless/dmenu"]
 	path = .local/opt/suckless/dmenu
 	url = git@github.com:AbdeltwabMF/dmenu.git
-
 [submodule ".local/share/wallpapers"]
 	path = .local/share/wallpapers
 	url = git@github.com:AbdeltwabMF/wallpapers.git
-
 [submodule ".local/opt/peda"]
 	path = .local/opt/peda
 	url = https://github.com/longld/peda.git
-
 [submodule ".local/sbin"]
 	path = .local/sbin
 	url = git@github.com:AbdeltwabMF/scripts.git
+[submodule ".local/share/zpm"]
+	path = .local/share/zpm
+	url = https://github.com/zpm-zsh/zpm.git

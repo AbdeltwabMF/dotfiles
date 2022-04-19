@@ -17,7 +17,24 @@ SAVEHIST=100000000
 HISTFILESIZE=100000000
 
 # Load aliases.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias"
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias"
+
+# Clean up
+user_id="$(id -u)"
+[[ -d /tmp/zsh-$user_id/ ]] && rm -rf /tmp/zsh-$user_id/*
+
+# Zsh package manager
+if [[ ! -f ~/.local/share/zpm/zpm.zsh ]]; then
+  git clone --recursive https://github.com/zpm-zsh/zpm ~/.local/share/zpm
+fi
+source ~/.local/share/zpm/zpm.zsh
+
+# Plugins
+zpm load zsh-users/zsh-autosuggestions
+zpm load zsh-users/zsh-history-substring-search
+zpm load zsh-users/zsh-completions
+zpm load zsh-users/zsh-syntax-highlighting
+zpm load softmoth/zsh-vim-mode
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -96,11 +113,6 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.cache/zsh/completion
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
-
-# Plugins section: Enable fish style features
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
