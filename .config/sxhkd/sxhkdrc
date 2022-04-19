@@ -20,7 +20,8 @@ super + Return
   $TERMINAL
 
 super + e
-  emacsclient -c
+  emacs
+#  emacsclient -c
 
 super + { period, comma }
   { screenkey&, killall screenkey }
@@ -34,8 +35,8 @@ super + d
 super + { n, t, c, m, p, u, r, a }
   $TERMINAL -e { nnn, htop, calc, neomutt, castero, ncmpcpp, newsboat, calcurse }
 
-super + ctrl + { k, e, j, n, m, d }
-  { dmenu_kill, dmenu_exit, dmenu_emoji, dmenu_man, dmenu_mount, dmenu_ytdl }
+super + ctrl + { k, e, j, n, m, d, l }
+  { dmenu_kill, dmenu_exit, dmenu_emoji, dmenu_man, dmenu_mount, dmenu_ytdl, dmenu_pass }
 
 super + shift + { q, Arabic_dad }
   { closefocus, closefocus }
