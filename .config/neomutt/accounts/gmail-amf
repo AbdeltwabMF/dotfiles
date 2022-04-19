@@ -5,9 +5,9 @@ unmailboxes *
 # in/out mail servers
 set realname	= "Abd El-Twab M. Fakhry"
 set folder 	= "imaps://abdeltwab.m.fakhry@gmail.com@imap.gmail.com:993"
-set imap_pass 	= `pass show MailProvider/Gmail/apw/abdeltwab.m.fakhry@gmail.com`
+set imap_pass 	= `pass show mail_provider/gmail/apw/abdeltwab.m.fakhry@gmail.com`
 set smtp_url 	= "smtps://abdeltwab.m.fakhry@gmail.com@smtp.gmail.com:465"
-set smtp_pass 	= `pass show MailProvider/Gmail/apw/abdeltwab.m.fakhry@gmail.com`
+set smtp_pass 	= `pass show mail_provider/gmail/apw/abdeltwab.m.fakhry@gmail.com`
 
 set from 	= "abdeltwab.m.fakhry@gmail.com"
 set spoolfile 	= "+Inbox"

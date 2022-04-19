@@ -5,5 +5,5 @@ source ~/.config/neomutt/colors
 source ~/.config/neomutt/mappings
 
 # Accounts
-source ~/.config/neomutt/accounts/MainGmail
-folder-hook $folder 'source ~/.config/neomutt/accounts/MainGmail'
+source ~/.config/neomutt/accounts/gmail-amf
+folder-hook $folder 'source ~/.config/neomutt/accounts/gmail-amf'
