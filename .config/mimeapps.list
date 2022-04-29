@@ -29,6 +29,7 @@ x-scheme-handler/kite=kite-copilot.desktop
 image/x-portable-pixmap=sxiv.desktop
 x-scheme-handler/discord-668477264995811338=nuclear.desktop
 text/x-java=text.desktop
+text/x-tex=text.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop;

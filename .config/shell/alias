@@ -144,3 +144,17 @@ mvnfx() {
     -Dversion=1.0.0 \
     -Djavafx-version=11
 }
+
+texbib() {
+  engine="${1:-pdflatex}"
+  file="${2:-main.tex}"
+
+  echo "Compiling with ${engine}..."
+  ${engine} ${file}
+  echo "Bibtexing..."
+  bibtex ${file%.*}
+  echo "2nd round of Compiling with ${engine}..."
+  ${engine} ${file}
+  echo "3rd round of Compiling with ${engine}..."
+  ${engine} ${file}
+}
