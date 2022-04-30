@@ -48,17 +48,17 @@ alias \
 # Youtube-dl
 # Download single video
 yt() {
-  youtube-dl -i --add-metadata -o "$HOME/vault/dls/Videos/%(title)s.%(ext)s" "$@"
+  youtube-dl -i --add-metadata -o "$HOME/vault/downloads/Videos/%(title)s.%(ext)s" "$@"
 }
 
 # Download YouTube playlist videos in separate directory indexed by video order in a playlist
 ytpl() {
-  youtube-dl -i --add-metadata -o "$HOME/vault/dls/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
+  youtube-dl -i --add-metadata -o "$HOME/vault/downloads/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
 }
 
 # Download audio Only
 ytx() {
-  youtube-dl -x --audio-format "mp3" -i --add-metadata --embed-thumbnail -o "$HOME/vault/ods/Music/%(title)s.%(ext)s" "$@"
+  youtube-dl -x --audio-format "mp3" -i --add-metadata --embed-thumbnail -o "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
 }
 
 # Downloading a portion of video
@@ -66,7 +66,7 @@ ytx() {
 # -to --> end time   00:03:00.00
 # make sure that you use the correct format time 00:00:00.00
 ytp() {
-  ffmpeg -ss "$1" -to "$2" -i "$(youtube-dl -f best -i --add-metadata --get-url "$3")" "$HOME/vault/dls/Videos/""$(youtube-dl --get-title "$3")".mp4
+  ffmpeg -ss "$1" -to "$2" -i "$(youtube-dl -f best -i --add-metadata --get-url "$3")" "$HOME/vault/downloads/Videos/""$(youtube-dl --get-title "$3")".mp4
 }
 
 # copy working directory
