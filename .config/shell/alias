@@ -34,6 +34,7 @@ alias \
 alias \
 	trem="transmission-remote" \
 	v="nvim" \
+  se="sudo nvim" \
 	z="zathura" \
 	l="lsd -a" \
 	ll="lsd -alh" \
