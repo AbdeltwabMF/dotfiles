@@ -7,7 +7,7 @@
 # If you use startx/xinit like a Chad, this file will also be sourced.
 
 # onetime
-xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources   # Uncomment to use Xresources colors/settings on startup
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources/classic.xresources   # Uncomment to use Xresources colors/settings on startup
 setbg                   # set the background with the `setbg` script
 us-layout               # fix layout
 xset r rate 300 50			# speed xrate up
