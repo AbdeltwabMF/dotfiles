@@ -1,88 +1,97 @@
 #!/bin/zsh
 #
 # ~/.env
-#
-
 # Environmental variables are set here.
 
-# Add `~/.local/bin` to $PATH
+unsetopt PROMPT_SP
+
+# PATH settings start:
 export PATH="$PATH:/home/amf/.local/bin"
 export PATH="$PATH:${$(find /home/amf/.local/sbin -type d -printf %p:)%%:}"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/gem/ruby/3.0.0/bin"
-export XCURSOR_PATH="${XCURSOR_PATH}:~/.local/share/icons"
+## PATH settings end.
 
-unsetopt PROMPT_SP
-
-# Mostly used
+# Mostly used applications start:
 export EDITOR="/usr/bin/nvim"
 export TERMINAL="/usr/local/bin/st"
 export BROWSER="/usr/bin/brave"
-
-# Window Manager
 export STATUSBAR="/usr/local/bin/dwmblocks"
 export WM="/usr/local/bin/dwm"
+## Mostly used applications end.
 
-# ~/ Clean-up:
+# XDG Base Directories (XDG_*) start:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
+## XDG Base Directories (XDG_*) end.
 
+# x11 settings start:
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+## x11 settings end.
 
-# C/C++ flags
+# C/C++ flags start:
 export WFLG="-Wall -Wextra -Wshadow -Wformat=2 -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wfloat-equal"
 export DFLG="-D_GLIBCXX_ASSERTIONS -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_FORTIFY_SOURCE=2 -fno-sanitize-recover -fstack-protector -DDEBUG -ggdb3 -fsanitize=address,undefined -fmax-errors=2"
 export OFLG="-Og -g -Ofast -pedantic"
+## C/C++ flags end.
 
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
-export LESSHISTFILE="-"
-
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
-
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
-export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export GRIPHOME="${XDG_CONFIG_HOME:-$HOME/.config}/grip"
 export CONAN_USER_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export ELECTRUMDIR="${XDG_DATA_HOME:-$HOME/.local/share}/electrum"
-export NODE_REPL_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/node_repl_history"
-export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
 
 export TEXMFCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/texlive/texmf-config"
 export TEXMFHOME="${XDG_DATA_HOME:-$HOME/.local/share}/texmf"
 export TEXMFVAR="${XDG_CACHE_HOME:-$HOME/.cache}/texlive/texmf-var"
 
-export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/Android/Sdk"
-export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/Android"
-export ANDROID_EMULATOR_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/Android/.android"
-export GRADLE_USER_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/gradle"
-
-# You might want to specify a new location if the default location is low on disk space.
-export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/Android/.android/avd"
-export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-export CHROME_EXECUTABLE="/usr/bin/brave"
-
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export CALCPATH="${XDG_DATA_HOME:-$HOME/.local/share}/calc"
 export AUDACITY_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/audacity"
 export CARGO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/cargo"
-export ICEAUTHORITY="${XDG_CACHE_HOME:-$HOME/.cache}/ICEauthority"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export W3M_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/w3m"
-export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export SQLITE_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/sqlite_history"
 export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim"
 export IPFS_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/ipfs"
 
-# LESS
-export LESS=-R
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+
+# Development tools start:
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+
+# You might want to specify a new location if the default location is low on disk space.
+export ANDROID_AVD_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/Android/.android/avd"
+export ANDROID_SDK_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/Android/Sdk"
+export ANDROID_PREFS_ROOT="${XDG_CONFIG_HOME:-$HOME/.config}/Android"
+export ANDROID_EMULATOR_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/Android/.android"
+
+export GRADLE_USER_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/gradle"
+export CHROME_EXECUTABLE="/usr/bin/brave"
+
+export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+
+export NODE_REPL_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/node_repl_history"
+export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
+
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/"
+export npm_config_cache="${XDG_CACHE_HOME:-$HOME/.cache}/npm"
+# if you do this one, make sure to add $XDG_DATA_HOME/npm/bin to the $PATH,
+# otherwise global installed executables won't be accessible on the cli.
+# export npm_config_prefix="${XDG_DATA_HOME:-$HOME/.local/share}/npm"
+## Development tools end.
+
+# LESS start:
+# less is a process that reads input from the standard input
+# and writes output to the standard output.
+export LESS="-R"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
 export LESS_TERMCAP_me="$(printf '%b' '[0m')"
@@ -91,41 +100,46 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+export LESSHISTFILE="-"
+## LESS end.
 
-# Other program settings:
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+# Uniform look for Qt and GTK applications start:
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export XCURSOR_PATH="${XCURSOR_PATH}:~/.local/share/icons"
 export QT_QPA_PLATFORMTHEME=gtk2	# Have QT use gtk2 theme instead of qt5ct
 export QT_QPA_PLATFORMTHEME=qt6gtk2
 export QT_STYLE_OVERRIDE=gtk2	# Use Adwaita theme for QT
-export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
-export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
+export AWT_TOOLKIT="MToolkit wmname LG3D"	# May have to install wmname
+## Uniform look for Qt and GTK applications end.
 
-export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/"
-export npm_config_cache="${XDG_CACHE_HOME:-$HOME/.cache}/npm"
-# if you do this one, make sure to add $XDG_DATA_HOME/npm/bin to the $PATH,
-# otherwise global installed executables won't be accessible on the cli.
-# export npm_config_prefix="${XDG_DATA_HOME:-$HOME/.local/share}/npm"
-
-# Locale
+# Locale settings start:
 export TZ='Africa/Cairo'
 export LANG='en_US.UTF-8'
+## Locale settings end.
 
-# NNN FM env vars
-export NNN_BMS='o:~/vault/dox/org;'
+# NNN file manager env variables start:
+export NNN_BMS='o:~/vault/documents/org;'
 export NNN_SSHFS="sshfs -o follow_symlinks"         # make sshfs follow symlinks on the remote
 export NNN_COLORS="2136"                            # use a different color for each context
 export NNN_TRASH=1                                  # trash (needs trash-cli) instead of delete
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='a:autojump;b:boom;c:bulknew;d:cdpath;e:chksum;f:cmusq;g:diffs;h:dragdrop;i:dups;g:finder;k:fixname;l:fzcd;m:fzhist;n:fzopen;o:fzplug;p:getplugs;q:gpgd;r:gpge;s:gutenread;t:imgresize;u:imgur;v:imgview;w:ipinfo;x:kdeconnect;y:launch;z:mimelist;A:moclyrics;B:mocq;C:mp3conv;D:mtpmount;E:nbak;F:nmount;G:nuke;H:oldbigfile;I:organize;G:pdfread;K:preview-tabbed;L:preview-tui;M:pskill;N:readme.md;O:renamer;P:ringtone;Q:rsynccp;R:splitjoin;S:suedit;T:togglex;U:umounttree;V:upload;W:wallpaper;X:x2sel;Y:xdgdefault;'
+## NNN file manager env variables end.
 
-# DBUS Setup
+# Authorization, authentication and credentials start:
 eval "$(dbus-launch)"
 export DBUS_SESSION_BUS_ADDRESS
 
-# SSH & GPG Setup
+export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
+
+export ICEAUTHORITY="${XDG_CACHE_HOME:-$HOME/.cache}/ICEauthority"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
 export SSH_ASKPASS="ksshaskpass"
 export SSH_ASKPASS_REQUIRE="prefer"
 eval "$(ssh-agent -s)"
 
 GPG_TTY=$(tty)
 export GPG_TTY
+## Authorization, authentication and credentials end.

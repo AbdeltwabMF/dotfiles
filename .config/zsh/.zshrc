@@ -1,7 +1,7 @@
 #!/bin/zsh
 #
 # ~/.zshrc
-#
+# zsh configuration file
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
@@ -17,7 +17,8 @@ SAVEHIST=100000000
 HISTFILESIZE=100000000
 
 # Load aliases.
-[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias"
+[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias" ]] \
+    && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/alias"
 
 # Clean up
 user_id="$(id -u)"

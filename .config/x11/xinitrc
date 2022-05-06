@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 #
 # ~/.xinitrc
-#
-
 # Executed by startx (run your window manager from here)
 
 # There are some small but important commands that need to be run when we start

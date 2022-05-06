@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # ~/.alias
-#
+# aliases for zsh are set here.
 
-# XDG Base Directory || Clean up
+# XDG Base Directory Specification:
 alias \
   wget='wget --hsts-file="${XDG_CACHE_HOME:-$HOME/.cache}/wget-hsts"' \
   yarn='yarn --use-yarnrc "${XDG_CONFIG_HOME:-$HOME/.config}/yarn/config"' \
@@ -11,26 +11,26 @@ alias \
   monerod='monerod --data-dir "${XDG_DATA_HOME:-$HOME/.local/share}/bitmoner"' \
   irssi='irssi --home="${XDG_CONFIG_HOME:-$HOME/.config}"/irssi'
 
-# Use neovim for vim if present.
+# Use neovim for vim if present:
 [[ -x "$(command -v nvim)" ]] && alias vim="nvim" vimdiff="nvim -d"
 
+# Sudo not required for some system commands:
 declare -a sbin
 sbin=( netstat mount umount sv su pacman updatedb
 reboot intel_gpu_top docker poweroff vnstat aireplay-ng
 airodump-ng aircrack-ng airmon-ng );
 
-# sudo not required for some system commands
 for ((i = 1; i <= ${#sbin[@]}; i++)); do
   command="${sbin[$i]}"
   alias ${sbin[$i]}="sudo ${command}"
 done;
 
-# Colorize commands when possible.
+# Colorize commands when possible:
 alias \
 	grep="grep --color=auto" \
 	diff="diff --color=auto"
 
-# These common commands are just too long! Abbreviate them.
+# These common commands are just too long! Abbreviate them:
 alias \
 	trem="transmission-remote" \
 	v="nvim" \
@@ -43,23 +43,29 @@ alias \
 	xci="xclip -i -selection clipboard" \
 	pdf2png="pdftoppm -singlefile -png" \
 	pdf2pngs="pdftoppm -png" \
-	drdr="dragon-drag-and-drop" \
-	fnsr="fc-list | grep -i "
+	drdr="dragon-drag-and-drop"
+  cwd="pwd | tr -d '\r\n' | xclip -selection clipboard" \
+  cp="cp -iv" \
+  mv="mv -iv" \
+  untar="tar xvf"
 
-# Youtube-dl
+# Youtube-dl functions:
 # Download single video
 yt() {
-  youtube-dl -i --add-metadata -o "$HOME/vault/downloads/Videos/%(title)s.%(ext)s" "$@"
+  youtube-dl -i --add-metadata -o \
+    "$HOME/vault/downloads/Videos/%(title)s.%(ext)s" "$@"
 }
 
 # Download YouTube playlist videos in separate directory indexed by video order in a playlist
 ytpl() {
-  youtube-dl -i --add-metadata -o "$HOME/vault/downloads/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
+  youtube-dl -i --add-metadata -o \
+    "$HOME/vault/downloads/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
 }
 
 # Download audio Only
 ytx() {
-  youtube-dl -x --audio-format "mp3" -i --add-metadata --embed-thumbnail -o "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
+  youtube-dl -x -i --add-metadata -o --embed-thumbnail \
+    --audio-format "mp3" "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
 }
 
 # Downloading a portion of video
@@ -67,21 +73,16 @@ ytx() {
 # -to --> end time   00:03:00.00
 # make sure that you use the correct format time 00:00:00.00
 ytp() {
-  ffmpeg -ss "$1" -to "$2" -i "$(youtube-dl -f best -i --add-metadata --get-url "$3")" "$HOME/vault/downloads/Videos/""$(youtube-dl --get-title "$3")".mp4
+  ffmpeg -ss "$1" -to "$2" -i \
+    "$(youtube-dl -f best -i --add-metadata --get-url "$3")" \
+    "$HOME/vault/downloads/Videos/""$(youtube-dl --get-title "$3")".mp4
 }
 
-# copy working directory
-alias \
-  cwd='pwd | tr -d "\r\n" | xclip -selection clipboard' \
-  cp='cp -iv' \
-  mv='mv -iv' \
-  untar='tar xvf'
-
-# Pipe my public key to my clipboard.
+# Credentials aliases:
 alias pubgpg="gpg --export --armor abdeltwab.m.fakhry@protonmail.com | xclip -i -selection clipboard | echo '=> Public key copied to pasteboard.'"
 alias pubssh="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> Public key copied to pasteboard.'"
 
-# to backup a directory:
+# Backup functions:
 bkup() {
 	tar cf - "${1}" | 7za a -si "${1}.tar.7z"
 }
@@ -121,6 +122,7 @@ ex () {
   fi
 }
 
+# Development aliases:
 # Maven
 # Instantiate a new JavaSE Maven project
 # Usage: mvnse <artifact-id> <group-id>
@@ -144,18 +146,4 @@ mvnfx() {
     -DgroupId="${2:-amf}" \
     -Dversion=1.0.0 \
     -Djavafx-version=11
-}
-
-texbib() {
-  engine="${1:-pdflatex}"
-  file="${2:-main.tex}"
-
-  echo "Compiling with ${engine}..."
-  ${engine} ${file}
-  echo "Bibtexing..."
-  bibtex ${file%.*}
-  echo "2nd round of Compiling with ${engine}..."
-  ${engine} ${file}
-  echo "3rd round of Compiling with ${engine}..."
-  ${engine} ${file}
 }
