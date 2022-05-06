@@ -54,3 +54,9 @@
 !! white dark/light
 *color7:                S_base2
 *color15:               S_base3
+
+!! Transparency (0.0 - 1.0):
+!! *.alpha: 0.89765
+
+Xcursor.theme: phinger-cursors-light
+Xcursor.size:  32

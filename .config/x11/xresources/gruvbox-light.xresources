@@ -6,6 +6,12 @@
 ! Last Modified: 6 Sep 2014
 ! -----------------------------------------------------------------------------
 
+!! Transparency (0.0 - 1.0):
+!! *.alpha: 0.89765
+
+Xcursor.theme: phinger-cursors-light
+Xcursor.size:  32
+
 ! hard contrast: *background: #f9f5d7
 *background: #fbf1c7
 ! soft contrast: *background: #f2e5bc

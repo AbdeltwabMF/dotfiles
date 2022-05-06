@@ -23,6 +23,12 @@
 #define nord14 #A3BE8C
 #define nord15 #B48EAD
 
+!! Transparency (0.0 - 1.0):
+!! *.alpha: 0.89765
+
+Xcursor.theme: phinger-cursors-light
+Xcursor.size:  32
+
 *.foreground:   nord4
 *.background:   nord0
 *.cursorColor:  nord4

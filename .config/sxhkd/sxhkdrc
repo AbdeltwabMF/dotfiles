@@ -82,3 +82,6 @@ super + shift + Return;
 
 super + shift + b
   setbg
+
+super + shift + c
+  gencs

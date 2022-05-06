@@ -17,7 +17,7 @@ export EDITOR="/usr/bin/nvim"
 export TERMINAL="/usr/local/bin/st"
 export BROWSER="/usr/bin/brave"
 export STATUSBAR="/usr/local/bin/dwmblocks"
-export WM="/usr/local/bin/dwm"
+export WINMAN="/usr/local/bin/dwm"
 ## Mostly used applications end.
 
 # XDG Base Directories (XDG_*) start:
