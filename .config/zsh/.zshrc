@@ -36,6 +36,7 @@ zpm load zsh-users/zsh-history-substring-search
 zpm load zsh-users/zsh-completions
 zpm load zsh-users/zsh-syntax-highlighting
 zpm load softmoth/zsh-vim-mode
+zpm load ellie/atuin
 
 # Basic auto/tab complete:
 autoload -U compinit
