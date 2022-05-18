@@ -5,3 +5,4 @@ set default-bg "#000000"
 set selection-clipboard clipboard
 set font "Fantasque Sans Mono 10"
 set sandbox none
+set guioptions h
