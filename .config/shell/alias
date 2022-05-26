@@ -64,8 +64,8 @@ ytpl() {
 
 # Download audio Only
 ytx() {
-  youtube-dl -x -i --add-metadata -o --embed-thumbnail \
-    --audio-format "mp3" "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
+  youtube-dl -x -i --add-metadata -o --embed-thumbnail --audio-format "mp3" \
+    "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
 }
 
 # Downloading a portion of video
