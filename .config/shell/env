@@ -87,6 +87,8 @@ export npm_config_cache="${XDG_CACHE_HOME:-$HOME/.cache}/npm"
 # if you do this one, make sure to add $XDG_DATA_HOME/npm/bin to the $PATH,
 # otherwise global installed executables won't be accessible on the cli.
 # export npm_config_prefix="${XDG_DATA_HOME:-$HOME/.local/share}/npm"
+
+export WAKATIME_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/wakatime"
 ## Development tools end.
 
 # LESS start:
