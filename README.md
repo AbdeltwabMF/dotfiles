@@ -13,3 +13,6 @@ Here you will find the configuration for some of the software that I use.
 
 
 | 📢 If you wanna use my configuration files, Use them at Your Own Risk
+
+## License
+Licensed under the [GPLv3](LICENSE) License.
