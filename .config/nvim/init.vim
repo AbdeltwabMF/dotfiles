@@ -301,13 +301,14 @@ let g:user_emmet_prev_key = '<leader>2'
 
 " Standard Setup
 let g:ale_linters = {
-\   'javascript': ['standard', 'eslint', 'prettier'],
-\   'typescript': ['tslint', 'eslint', 'prettier'],
+\   'javascript': ['standard'],
+\   'typescript': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
 \}
 let g:ale_fixers = {
-\   'javascript': ['standard', 'eslint', 'prettier'],
-\   'javascript.jsx': ['standard', 'eslint', 'prettier'],
-\   'typescript': ['prettier', 'tslint'],
+\   'javascript': ['standard'],
+\   'typescript': ['prettier', 'eslint'],
+\   'typescriptreact': ['prettier', 'eslint'],
 \}
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
