@@ -304,11 +304,23 @@ let g:ale_linters = {
 \   'javascript': ['standard'],
 \   'typescript': ['prettier', 'eslint'],
 \   'typescriptreact': ['prettier', 'eslint'],
+\   'css': ['prettier'],
+\   'less': ['prettier'],
+\   'scss': ['prettier'],
+\   'json': ['prettier'],
+\   'graphql': ['prettier'],
+\   'markdown': ['remark-lint'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['standard'],
 \   'typescript': ['prettier', 'eslint'],
 \   'typescriptreact': ['prettier', 'eslint'],
+\   'css': ['prettier'],
+\   'less': ['prettier'],
+\   'scss': ['prettier'],
+\   'json': ['prettier'],
+\   'graphql': ['prettier'],
+\   'markdown': ['remark-lint'],
 \}
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
