@@ -15,18 +15,15 @@ else
   . "$HOME/.xprofile"
 fi
 
-session=$1
-[[ -z "$session" ]] && session=dwm
+session=$1 | dwm
 
 # Start Window Manager here
 case ${session} in
-    i3|i3wm) exec i3 ;;
-    kde) exec startplasma-x11 ;;
-    xfce|xfce4) exec startxfce4 ;;
-		dwm)
-      exec ${STATUSBAR} &
-      exec dwm
-      ;;
-    # No known session, try to run it as command
-    *) exec "$1" ;;
+  i3|i3wm) exec i3 ;;
+  mate) exec mate-session ;;
+  kde) exec startplasma-x11 ;;
+  xfce|xfce4) exec startxfce4 ;;
+  dwm) exec dwmblocks ; exec dwm ;;
+  # No known session, try to run it as command
+  *) ;;
 esac

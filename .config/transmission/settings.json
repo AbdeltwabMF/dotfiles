@@ -32,7 +32,7 @@
     "main-window-x": 8,
     "main-window-y": 26,
     "message-level": 2,
-    "open-dialog-dir": "/home/amf",
+    "open-dialog-dir": "/home/amf/vault/downloads/Brave",
     "peer-congestion-algorithm": "",
     "peer-id-ttl-hours": 6,
     "peer-limit-global": 200,
