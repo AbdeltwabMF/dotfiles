@@ -1,0 +1,5 @@
+; gedit GtkAccelMap rc-file         -*- scheme -*-
+; this file is an automated accelerator map dump
+;
+; (gtk_accel_path "<gedit>/plugins/terminal/copy-clipboard" "<Primary><Shift>c")
+; (gtk_accel_path "<gedit>/plugins/terminal/paste-clipboard" "<Primary><Shift>v")

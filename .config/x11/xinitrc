@@ -23,7 +23,9 @@ case ${session} in
   mate) exec mate-session ;;
   kde) exec startplasma-x11 ;;
   xfce|xfce4) exec startxfce4 ;;
-  dwm) exec dwmblocks ; exec dwm ;;
+  dwm)
+    exec dwmblocks &
+    exec dwm ;;
   # No known session, try to run it as command
   *) ;;
 esac
