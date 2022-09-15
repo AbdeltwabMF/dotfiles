@@ -9,13 +9,15 @@
 # (login screen) and so they are needed there. To prevent doubling up commands,
 # I source them here with the line below.
 
+fallback_session=dwm
+session=$1
+[[ -z "$session" ]] && session=$fallback_session
+
 if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]]; then
   . "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
 else
   . "$HOME/.xprofile"
 fi
-
-session=$1 | dwm
 
 # Start Window Manager here
 case ${session} in
@@ -24,8 +26,12 @@ case ${session} in
   kde) exec startplasma-x11 ;;
   xfce|xfce4) exec startxfce4 ;;
   dwm)
-    exec dwmblocks &
+    # Remember that lines following a command using exec would be ignored.
+    # For example, to start xscreensaver in the background and then start openbox, use the following:
+    # xscreensaver &
+    # exec openbox-session
+    ${STATUSBAR} &
     exec dwm ;;
   # No known session, try to run it as command
-  *) ;;
+  *) exec "$session" ;;
 esac
