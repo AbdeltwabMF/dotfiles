@@ -11,7 +11,39 @@
 
 fallback_session=dwm
 session=$1
-[[ -z "$session" ]] && session=$fallback_session
+
+installed() {
+  case "$1" in
+    dwm)
+      if which dwm >/dev/null 2>&1; then
+        echo ok; else echo no;
+      fi ;;
+    i3|i3wm)
+      if which i3 >/dev/null 2>&1; then
+        echo ok; else echo no;
+      fi ;;
+    mate)
+      if which mate-session >/dev/null 2>&1; then
+        echo ok; else echo no;
+      fi ;;
+    kde)
+      if which startplasma-x11 >/dev/null 2>&1; then
+        echo ok; else echo no;
+      fi ;;
+    xfce|xcfe4)
+      if which startxfce4 >/dev/null 2>&1; then
+        echo ok; else echo no;
+      fi ;;
+    *) echo no ;;
+  esac
+}
+
+if [[ -z "$session" ]] || [[ "$(installed "$session")" == "no" ]]; then
+  echo revert back to dwm
+  session=$fallback_session
+else
+  echo ok
+fi
 
 if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]]; then
   . "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"

@@ -1,6 +1,7 @@
 [Default Applications]
 image/png=image.desktop
 image/jpeg=image.desktop
+image/gif=image.desktop
 image/jpg=image.desktop
 video/x-matroska=media.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop
@@ -30,6 +31,7 @@ image/x-portable-pixmap=sxiv.desktop
 x-scheme-handler/discord-668477264995811338=nuclear.desktop
 text/x-java=text.desktop
 text/x-tex=text.desktop
+image/webp=image.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop;
