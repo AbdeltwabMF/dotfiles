@@ -1,0 +1,4 @@
+0 * * * * /usr/bin/newsboat -x reload
+0 * * * * /usr/bin/updatedb
+50 23 * * * $HOME/.local/sbin/general/pacfet
+0 0 * * * /usr/bin/crontab -l > $HOME/.config/crontab
