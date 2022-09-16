@@ -16,7 +16,7 @@ screenshot              # Security check
 picom &                 # transparency
 dunst &                 # for notifications
 xbacklight -time 500 -set 30
-amixer set Master 30%
+pamixer --set-volume 30
 sxhkd &                 # bind Keys
 unclutter &							# remove mouse when idle
 xidlehook --detect-sleep --not-when-fullscreen --timer 900 "slock -m 'Allah is always watching you' us-layout" "" &   # autolock

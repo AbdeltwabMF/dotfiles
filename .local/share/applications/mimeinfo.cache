@@ -1,3 +1,5 @@
 [MIME Cache]
+application/pdf=emacsclient.desktop;
+x-scheme-handler/bitcoin=electrum.desktop;
 x-scheme-handler/monero=monero-gui.desktop;
 x-scheme-handler/moneroseed=monero-gui.desktop;
