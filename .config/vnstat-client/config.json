@@ -1,0 +1,19 @@
+{
+	"netStatsRefreshTime": 1000,
+	"checkUpdatesOnStartup": true,
+	"interface": "2",
+	"appearance": {
+		"globalTheme": "blue",
+		"lineChart": {
+			"hasArea": true,
+			"areaOpacity": 0.5,
+			"colors": "nivo",
+			"curve": "cardinal"
+		},
+		"barChart": {
+			"colors": "nivo",
+			"isGrouped": true,
+			"layout": "horizontal"
+		}
+	}
+}
