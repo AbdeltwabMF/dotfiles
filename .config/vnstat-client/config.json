@@ -7,11 +7,11 @@
 		"lineChart": {
 			"hasArea": true,
 			"areaOpacity": 0.5,
-			"colors": "nivo",
-			"curve": "cardinal"
+			"colors": "paired",
+			"curve": "natural"
 		},
 		"barChart": {
-			"colors": "nivo",
+			"colors": "dark2",
 			"isGrouped": true,
 			"layout": "horizontal"
 		}

@@ -1,13 +1,1 @@
-.org.chromium.Chromium.TXsk2o
-blob_storage
-Cache
-Code Cache
-Crashpad
-Dictionaries
-GPUCache
-Local Storage
-logs
-Network Persistent State
-Preferences
-Session Storage
-window-state-main.json
+*
