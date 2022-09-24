@@ -17,7 +17,7 @@ alias \
 # Sudo not required for some system commands:
 declare -a sbin
 sbin=( netstat mount umount sv su pacman updatedb
-reboot intel_gpu_top docker poweroff vnstat aireplay-ng
+reboot intel_gpu_top docker poweroff vnstat aireplay-ng mandb
 airodump-ng aircrack-ng airmon-ng );
 
 for ((i = 1; i <= ${#sbin[@]}; i++)); do
