@@ -6,8 +6,8 @@
 unsetopt PROMPT_SP
 
 # PATH settings start:
-export PATH="$PATH:/home/amf/.local/bin"
-export PATH="$PATH:${$(find /home/amf/.local/sbin -type d -printf %p:)%%:}"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:${$(find $HOME/.local/sbin -type d ! \( -path $HOME/.local/sbin/.git -prune \) -printf %p:)%%:}"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/gem/ruby/3.0.0/bin"
 ## PATH settings end.
@@ -82,11 +82,11 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export NODE_REPL_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/node_repl_history"
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
 
-export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/"
-export npm_config_cache="${XDG_CACHE_HOME:-$HOME/.cache}/npm"
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm"
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/npm"
 # if you do this one, make sure to add $XDG_DATA_HOME/npm/bin to the $PATH,
 # otherwise global installed executables won't be accessible on the cli.
-# export npm_config_prefix="${XDG_DATA_HOME:-$HOME/.local/share}/npm"
+# export NPM_CONFIG_PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/npm"
 
 export WAKATIME_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/wakatime"
 ## Development tools end.

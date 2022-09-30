@@ -54,6 +54,7 @@ Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plugin 'junegunn/seoul256.vim'
 Plugin 'mcchrish/nnn.vim'
 Plugin 'kkoomen/vim-doge'
+Plugin 'ajorgensen/vim-markdown-toc'
 Plugin 'davidbeckingsale/writegood.vim'
 Plugin 'glepnir/dashboard-nvim'
 Plugin 'ap/vim-css-color'

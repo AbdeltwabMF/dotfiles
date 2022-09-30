@@ -32,6 +32,7 @@ x-scheme-handler/discord-668477264995811338=nuclear.desktop
 text/x-java=text.desktop
 text/x-tex=text.desktop
 image/webp=image.desktop
+text/x-script.python=text.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop;
