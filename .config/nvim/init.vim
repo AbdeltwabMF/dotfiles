@@ -503,3 +503,4 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <C-h>
   \ denite#do_map('do_action', 'split')
 endfunction
+command! Scratch lua require'tools'.makeScratch()

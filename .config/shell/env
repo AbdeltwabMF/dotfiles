@@ -146,3 +146,5 @@ eval "$(ssh-agent -s)"
 GPG_TTY=$(tty)
 export GPG_TTY
 ## Authorization, authentication and credentials end.
+
+export VSCODE_PORTABLE="${XDG_DATA_HOME:-$HOME/.local/share}/vscode"

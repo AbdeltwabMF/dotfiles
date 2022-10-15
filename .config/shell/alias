@@ -9,7 +9,8 @@ alias \
   yarn='yarn --use-yarnrc "${XDG_CONFIG_HOME:-$HOME/.config}/yarn/config"' \
   svn='svn --config-dir "${XDG_CONFIG_HOME:-$HOME/.config}/subversion"' \
   monerod='monerod --data-dir "${XDG_DATA_HOME:-$HOME/.local/share}/bitmoner"' \
-  irssi='irssi --home="${XDG_CONFIG_HOME:-$HOME/.config}"/irssi'
+  irssi='irssi --home="${XDG_CONFIG_HOME:-$HOME/.config}"/irssi' \
+  code='code --extensions-dir "${XDG_DATA_HOME:-$HOME/.local/share}/vscode"'
 
 # Use neovim for vim if present:
 [[ -x "$(command -v nvim)" ]] && alias vim="nvim" vimdiff="nvim -d"
@@ -52,19 +53,19 @@ alias \
 # Youtube-dl functions:
 # Download single video
 yt() {
-  youtube-dl -i --add-metadata -o \
+  yt-dlp -i --add-metadata -o \
     "$HOME/vault/downloads/Videos/%(title)s.%(ext)s" "$@"
 }
 
 # Download YouTube playlist videos in separate directory indexed by video order in a playlist
 ytpl() {
-  youtube-dl -i --add-metadata -o \
+  yt-dlp -i --add-metadata -o \
     "$HOME/vault/downloads/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
 }
 
 # Download audio Only
 ytx() {
-  youtube-dl -x -i --add-metadata -o --embed-thumbnail --audio-format "mp3" \
+  yt-dlp -x -i --add-metadata -o --embed-thumbnail --audio-format "mp3" \
     "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
 }
 
@@ -74,8 +75,8 @@ ytx() {
 # make sure that you use the correct format time 00:00:00.00
 ytp() {
   ffmpeg -ss "$1" -to "$2" -i \
-    "$(youtube-dl -f best -i --add-metadata --get-url "$3")" \
-    "$HOME/vault/downloads/Videos/""$(youtube-dl --get-title "$3")".mp4
+    "$(yt-dlp -f best -i --add-metadata --get-url "$3")" \
+    "$HOME/vault/downloads/Videos/""$(yt-dlp --get-title "$3")".mp4
 }
 
 # Credentials aliases:
