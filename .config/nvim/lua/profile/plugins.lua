@@ -7,35 +7,28 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 return require('packer').startup({
 	function(use)
-		---------------------
 		-- Package Manager --
-		---------------------
-
 		use('wbthomason/packer.nvim')
 
-		----------------------
 		-- Required plugins --
-		----------------------
-
 		use('nvim-lua/plenary.nvim')
 
-		----------------------------------------
 		-- Theme, Icons, Statusbar, Bufferbar --
-		----------------------------------------
-
+		use({
+			'ellisonleao/gruvbox.nvim',
+			config = function()
+				require('profile.plugins.gruvbox')
+			end
+		})
 		use({
 		    'kyazdani42/nvim-web-devicons',
 		    config = function()
 		        require('nvim-web-devicons').setup()
 		    end,
 		})
-
     use({'vim-airline/vim-airline'})
 
-		---------------------------------
 		-- Navigation and Fuzzy Search --
-		---------------------------------
-
 		use({
 		    'karb94/neoscroll.nvim',
 		    event = 'WinScrolled',
@@ -44,10 +37,7 @@ return require('packer').startup({
 		    end,
 		})
 
-    -------------------------
     -- ale
-    -------------------------
-
     -- Load on a combination of conditions: specific filetypes or commands
     -- Also run code after load (see the "config" key)
     use {
@@ -57,49 +47,77 @@ return require('packer').startup({
       config = 'vim.cmd[[ALEEnable]]'
     }
 
-    -------------------------
     -- Completion
-    -------------------------
-      
     use {
       'haorenW1025/completion-nvim',
       opt = true,
-      requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
+      requires = {
+				{'hrsh7th/vim-vsnip', opt = true}, 
+				{'hrsh7th/vim-vsnip-integ', opt = true}
+			}
     }
 
-    -------------------------
     -- File Manager - nnn
-    -------------------------
-    
-    use({
-      'mcchrish/nnn.vim'
-    })
-
-		-------------------------
-		-- Editing to the MOON --
-		-------------------------
-
-		use('numToStr/prettierrc.nvim')
-
 		use({
-		    'tpope/vim-surround',
-		    event = 'BufRead',
-		    requires = {
-		        {
-		            'tpope/vim-repeat',
-		            event = 'BufRead',
-		        },
-		    },
+			"luukvbaal/nnn.nvim",
+			config = function() 
+				require("nnn").setup() 
+			end
+		})
+		-- Post-install/update hook with neovim command
+		use({
+			'nvim-treesitter/nvim-treesitter', 
+			run = ':TSUpdate'
 		})
 
+		-- Editing to the MOON --
+		use({
+			'numToStr/Comment.nvim',
+			config = function()
+				require('Comment').setup()
+			end
+		})
+		use({'numToStr/prettierrc.nvim'})
+		use({
+			'tpope/vim-surround',
+			event = 'BufRead',
+			requires = {
+				{
+					'tpope/vim-repeat',
+					event = 'BufRead',
+				},
+			},
+		})
 		use({
 		    'wellle/targets.vim',
 		    event = 'BufRead',
 		})
-
 		use({
 		    'AndrewRadev/splitjoin.vim',
 		    -- NOTE: splitjoin won't work with `BufRead` event
+		})
+
+		-- Utilities
+		use({
+			{
+				'nvim-telescope/telescope.nvim',
+				event = 'CursorHold',
+				config = function()
+					require('profile.plugins.telescope')
+				end,
+			},
+			{
+				'nvim-telescope/telescope-fzf-native.nvim',
+				after = 'telescope.nvim',
+				run = 'make',
+				config = function()
+					require('telescope').load_extension('fzf')
+				end,
+			},
+			{
+				'nvim-telescope/telescope-symbols.nvim',
+				after = 'telescope.nvim',
+			},
 		})
 
 	end, 

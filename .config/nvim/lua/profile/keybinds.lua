@@ -46,3 +46,4 @@ map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
 map('o', 'A', ':<C-U>normal! mzggVG<CR>`z')
 map('x', 'A', ':<C-U>normal! ggVG<CR>')
+
