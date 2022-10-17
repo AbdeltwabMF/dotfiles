@@ -1,10 +1,10 @@
-local lsp = require('lspconfig')
-local U = require('profile.plugins.lsp.utils')
+local lsp = require("lspconfig")
+local U = require("profile.plugins.lsp.utils")
 
 ---Common perf related flags for all the LSP servers
 local flags = {
-    allow_incremental_sync = true,
-    debounce_text_changes = 200,
+	allow_incremental_sync = true,
+	debounce_text_changes = 200,
 }
 
 ---Common capabilities including lsp snippets and autocompletion
@@ -14,8 +14,8 @@ local capabilities = U.capabilities()
 ---@param client table
 ---@param buf integer
 local function on_attach(client, buf)
-    U.disable_formatting(client)
-    U.mappings(buf)
+	U.disable_formatting(client)
+	U.mappings(buf)
 end
 
 -- Disable LSP logging
@@ -23,33 +23,42 @@ vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 
 -- Configuring native diagnostics
 vim.diagnostic.config({
-    virtual_text = {
-        source = 'always',
-    },
-    float = {
-        source = 'always',
-    },
+	virtual_text = {
+		source = "always",
+	},
+	float = {
+		source = "always",
+	},
 })
 
 ---List of the LSP server that don't need special configuration
 local servers = {
-    'zls', -- Zig
-    'gopls', -- Golang
-    'tsserver', -- Typescript
-    'html', -- HTML
-    'cssls', -- CSS
-    'jsonls', -- Json
-    'yamlls', -- YAML
-    'emmet_ls', -- emmet-ls
-    -- 'terraformls', -- Terraform
+	"zls", -- Zig
+	"gopls", -- Golang
+	"tsserver", -- Typescript
+	"quick_lint_js", -- Javascript
+	"texlab", -- Latex
+	"marksman", -- Markdown
+	"solang", -- Solidity
+	"html", -- HTML
+	"cssls", -- CSS
+	"jsonls", -- Json
+	"yamlls", -- YAML
+	"dockerls", -- Docker
+	"bashls", -- Bash
+	"pyright", -- Python
+	"clangd", -- C/C++
+	"jdtls", -- Java
+	"emmet_ls", -- emmet-ls
+	-- 'terraformls', -- Terraform
 }
 
 for _, server in ipairs(servers) do
-    lsp[server].setup({
-        flags = flags,
-        capabilities = capabilities,
-        on_attach = on_attach,
-    })
+	lsp[server].setup({
+		flags = flags,
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 end
 
 -- NOTE: Using `eslint_d` via `null-ls` bcz it is way fasterrrrrrr.
