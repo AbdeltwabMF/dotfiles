@@ -1,8 +1,8 @@
-local g = vim.g
-local o = vim.o
+local g = vim.g -- global variable
+local o = vim.o -- options
 
--- cmd('syntax on')
--- vim.api.nvim_command('filetype plugin indent on')
+vim.cmd('syntax on')
+vim.api.nvim_command('filetype plugin indent on')
 
 o.termguicolors = true
 -- o.background = 'dark'
@@ -19,23 +19,26 @@ o.scrolloff = 8
 
 -- Better editor UI
 o.number = true
-o.numberwidth = 5
+o.numberwidth = 2
 o.relativenumber = true
-o.signcolumn = 'yes:2'
+o.signcolumn = 'yes:1'
 o.cursorline = true
 
 -- Better editing experience
-o.expandtab = true
+o.expandtab = false
 -- o.smarttab = true
 o.cindent = true
 -- o.autoindent = true
 o.wrap = true
-o.textwidth = 300
+-- o.textwidth = 300
 o.tabstop = 2
-o.shiftwidth = 0
+o.shiftwidth = 2
 o.softtabstop = -1 -- If negative, shiftwidth value is used
-o.list = true
-o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
+o.mouse = 'a'
+o.hlsearch = false
+o.breakindent = true
+-- o.list = true
+-- o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
 -- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
 -- o.formatoptions = 'qrn1'
 
@@ -55,8 +58,8 @@ o.swapfile = false
 -- o.directory = '/tmp/'
 -- o.undodir = '/tmp/'
 
--- Remember 50 items in commandline history
-o.history = 50
+-- Remember 500 items in commandline history
+o.history = 500
 
 -- Better buffer splitting
 o.splitright = true
@@ -75,6 +78,6 @@ o.jumpoptions = 'view'
 -- o.foldnestmax = 3
 -- o.foldminlines = 1
 
--- Map <leader> to space
-g.mapleader = ' '
-g.maplocalleader = ' '
+-- Map <leader> to comma
+g.mapleader = ','
+g.maplocalleader = ','

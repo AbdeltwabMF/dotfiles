@@ -56,7 +56,7 @@ export CARGO_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/cargo"
 
 export W3M_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/w3m"
 export SQLITE_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/sqlite_history"
-export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim"
+# export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim"
 export IPFS_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/ipfs"
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'

@@ -1,3 +1,6 @@
+-- m -> mode
+-- k -> key
+-- v -> value
 local function map(m, k, v)
     vim.keymap.set(m, k, v, { silent = true })
 end
@@ -16,9 +19,6 @@ map('i', '<C-A>', '<ESC>I')
 -- Quickly save the current buffer or all buffers
 map('n', '<leader>w', '<CMD>update<CR>')
 map('n', '<leader>W', '<CMD>wall<CR>')
-
--- Quit neovim
-map('n', '<C-Q>', '<CMD>q<CR>')
 
 -- leader-o/O inserts blank line below/above
 map('n', '<leader>o', 'o<ESC>')

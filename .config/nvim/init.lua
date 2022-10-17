@@ -6,12 +6,12 @@
 
 
 -- Vanilla Config
-require('amf.settings')
-require('amf.autocmd')
-require('amf.plugins')
-require('amf.keybinds')
+require('profile.settings')
+require('profile.autocmd')
+require('profile.plugins')
+require('profile.keybinds')
 
----Pretty print lua table
+-- Pretty print lua table
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, { ... })
   print(unpack(objects))
