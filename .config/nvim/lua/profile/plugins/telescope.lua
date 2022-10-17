@@ -72,3 +72,4 @@ vim.keymap.set('n', "'c", Telescope.git_status)
 
 -- Find files
 vim.keymap.set('n', 'ff', Telescope.find_files)
+

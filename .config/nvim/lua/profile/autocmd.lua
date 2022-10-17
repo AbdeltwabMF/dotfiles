@@ -16,7 +16,7 @@ vim.filetype.add({
     },
 })
 
-local num_au = vim.api.nvim_create_augroup('NUMTOSTR', { clear = true })
+local num_au = vim.api.nvim_create_augroup('PROFILE', { clear = true })
 
 -- Highlight the region on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
