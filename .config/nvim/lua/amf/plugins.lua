@@ -15,9 +15,17 @@ return require("packer").startup({
 
 		-- Theme, Icons, Statusbar, Bufferbar --
 		use({
+			"akinsho/bufferline.nvim",
+			tag = "v3.*",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("bufferline").setup()
+			end,
+		})
+		use({
 			"ellisonleao/gruvbox.nvim",
 			config = function()
-				require("profile.plugins.gruvbox")
+				require("amf.plugins.gruvbox")
 			end,
 		})
 		use({
@@ -26,14 +34,28 @@ return require("packer").startup({
 				require("nvim-web-devicons").setup()
 			end,
 		})
-		use({ "vim-airline/vim-airline" })
+		-- use({"vim-airline/vim-airline"})
+		use({
+			"rebelot/heirline.nvim",
+			config = function()
+				require("amf.plugins.heirline")
+			end,
+		})
+		use({ "MunifTanjim/nui.nvim" })
+		use({
+			"folke/trouble.nvim",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("amf.plugins.trouble")
+			end,
+		})
 
 		-- Editor UI Niceties --
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufRead",
 			config = function()
-				require("profile.plugins.indentline")
+				require("amf.plugins.indentline")
 			end,
 		})
 		use({
@@ -47,14 +69,21 @@ return require("packer").startup({
 			"lewis6991/gitsigns.nvim",
 			event = "BufRead",
 			config = function()
-				require("profile.plugins.gitsigns")
+				require("amf.plugins.gitsigns")
 			end,
 		})
 		use({
 			"rhysd/git-messenger.vim",
 			event = "BufRead",
 			config = function()
-				require("profile.plugins.git-messenger")
+				require("amf.plugins.git-messenger")
+			end,
+		})
+		use({
+			"akinsho/toggleterm.nvim",
+			tag = "*",
+			config = function()
+				require("toggleterm").setup()
 			end,
 		})
 
@@ -77,16 +106,27 @@ return require("packer").startup({
 			config = "vim.cmd[[ALEEnable]]",
 		})
 
-		-- Completion
+		-- LSP | Completion
 		use({
-			"williamboman/nvim-lsp-installer",
+			"williamboman/mason.nvim",
+			config = function()
+				require("mason").setup()
+			end,
+		})
+		use({
+			"williamboman/mason-lspconfig.nvim",
+			after = "mason.nvim",
+			config = function()
+				require("amf.plugins.mason-lspconfig")
+			end,
 		})
 		use({
 			"neovim/nvim-lspconfig",
-			event = "BufRead",
 			config = function()
-				require("profile.plugins.lsp.servers")
+				require("amf.plugins.lsp.servers")
 			end,
+			after = "mason.nvim",
+			event = "BufRead",
 			requires = {
 				{
 					-- WARN: Unfortunately we won't be able to lazy load this
@@ -95,26 +135,16 @@ return require("packer").startup({
 			},
 		})
 		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			event = "BufRead",
-			config = function()
-				require("profile.plugins.lsp.null-ls")
-			end,
-		})
-		use({
 			{
 				"hrsh7th/nvim-cmp",
 				event = "InsertEnter",
 				config = function()
-					require("profile.plugins.lsp.nvim-cmp")
+					require("amf.plugins.cmp")
 				end,
 				requires = {
 					{
 						"L3MON4D3/LuaSnip",
 						event = "InsertEnter",
-						config = function()
-							require("profile.plugins.lsp.luasnip")
-						end,
 						requires = {
 							{
 								"rafamadriz/friendly-snippets",
@@ -127,14 +157,24 @@ return require("packer").startup({
 			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-path", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 		})
+		use({ "mfussenegger/nvim-dap" })
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			event = "BufRead",
+			config = function()
+				require("amf.plugins.lsp.null-ls")
+			end,
+		})
+
 		-- NOTE: nvim-autopairs needs to be loaded after nvim-cmp, so that <CR> would work properly
 		use({
 			"windwp/nvim-autopairs",
 			event = "InsertCharPre",
 			after = "nvim-cmp",
 			config = function()
-				require("profile.plugins.pairs")
+				require("amf.plugins.pairs")
 			end,
 		})
 
@@ -145,7 +185,19 @@ return require("packer").startup({
 		use({
 			"luukvbaal/nnn.nvim",
 			config = function()
-				require("profile.plugins.nnn")
+				require("amf.plugins.nnn")
+			end,
+		})
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+				"MunifTanjim/nui.nvim",
+			},
+			config = function()
+				require("amf.plugins.neotree")
 			end,
 		})
 
@@ -156,7 +208,7 @@ return require("packer").startup({
 				event = "CursorHold",
 				run = ":TSUpdate",
 				config = function()
-					require("profile.plugins.treesitter")
+					require("amf.plugins.treesitter")
 				end,
 			},
 			{ "nvim-treesitter/playground", after = "nvim-treesitter" },
@@ -199,7 +251,7 @@ return require("packer").startup({
 				"nvim-telescope/telescope.nvim",
 				event = "CursorHold",
 				config = function()
-					require("profile.plugins.telescope")
+					require("amf.plugins.telescope")
 				end,
 			},
 			{

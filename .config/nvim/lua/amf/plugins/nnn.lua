@@ -15,7 +15,7 @@ require("nnn").setup({
 			height = 0.5,    -- ^
 			xoffset = 0.5,   -- ^
 			yoffset = 0.5,   -- ^
-			border = "rounded"-- border decoration for example "rounded"(:h nvim_open_win)
+			border = "rounded" -- border decoration for example "rounded"(:h nvim_open_win)
 		},
 	}
 })

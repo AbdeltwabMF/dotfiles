@@ -4,7 +4,7 @@ require('gitsigns').setup({
 	signs = {
 		add = { text = '+' },
 		change = { text = '~' },
-		changedelete = { text = '=' },
+		changedelete = { text = '-' },
 	},
 	on_attach = function(buf)
 		local gs = package.loaded.gitsigns

@@ -1,5 +1,5 @@
 local lsp = require("lspconfig")
-local U = require("profile.plugins.lsp.utils")
+local U = require("amf.plugins.lsp.utils")
 
 ---Common perf related flags for all the LSP servers
 local flags = {
@@ -33,24 +33,22 @@ vim.diagnostic.config({
 
 ---List of the LSP server that don't need special configuration
 local servers = {
-	"zls", -- Zig
 	"gopls", -- Golang
 	"tsserver", -- Typescript
-	"quick_lint_js", -- Javascript
-	"texlab", -- Latex
-	"marksman", -- Markdown
-	"solang", -- Solidity
 	"html", -- HTML
 	"cssls", -- CSS
 	"jsonls", -- Json
 	"yamlls", -- YAML
-	"dockerls", -- Docker
-	"bashls", -- Bash
-	"pyright", -- Python
-	"clangd", -- C/C++
-	"jdtls", -- Java
-	"emmet_ls", -- emmet-ls
-	-- 'terraformls', -- Terraform
+	"bashls", -- bashls
+	"clangd", -- clangd
+	"cmake", -- cmake
+	"pyright", -- pyright
+	"rust_analyzer", -- rust_analyzer
+	"texlab", -- texlab
+	"sumneko_lua", -- sumneko_lua
+	"dockerls", -- dockerls
+	"sqls", -- sqls
+	"emmet_ls", -- emmet_ls
 }
 
 for _, server in ipairs(servers) do
