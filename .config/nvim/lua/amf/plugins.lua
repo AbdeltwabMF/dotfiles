@@ -34,12 +34,15 @@ return require("packer").startup({
 				require("nvim-web-devicons").setup()
 			end,
 		})
-		-- use({"vim-airline/vim-airline"})
 		use({
-			"rebelot/heirline.nvim",
+			"nvim-lualine/lualine.nvim",
 			config = function()
-				require("amf.plugins.heirline")
+				require("amf.plugins.lualine")
 			end,
+			requires = {
+				"kyazdani42/nvim-web-devicons",
+				opt = true,
+			},
 		})
 		use({ "MunifTanjim/nui.nvim" })
 		use({
@@ -48,6 +51,10 @@ return require("packer").startup({
 			config = function()
 				require("amf.plugins.trouble")
 			end,
+		})
+		use({
+			"SmiteshP/nvim-navic",
+			requires = "neovim/nvim-lspconfig",
 		})
 
 		-- Editor UI Niceties --
@@ -93,6 +100,12 @@ return require("packer").startup({
 			event = "WinScrolled",
 			config = function()
 				require("neoscroll").setup({ hide_cursor = false })
+			end,
+		})
+		use({
+			"rcarriga/nvim-notify",
+			config = function()
+				require("amf.plugins.notify")
 			end,
 		})
 

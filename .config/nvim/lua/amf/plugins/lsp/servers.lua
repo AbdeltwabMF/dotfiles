@@ -1,5 +1,6 @@
 local lsp = require("lspconfig")
 local U = require("amf.plugins.lsp.utils")
+local navic = require("nvim-navic")
 
 ---Common perf related flags for all the LSP servers
 local flags = {
@@ -16,6 +17,7 @@ local capabilities = U.capabilities()
 local function on_attach(client, buf)
 	U.disable_formatting(client)
 	U.mappings(buf)
+	navic.attach(client, buf)
 end
 
 -- Disable LSP logging
