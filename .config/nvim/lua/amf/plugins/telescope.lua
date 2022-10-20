@@ -75,3 +75,9 @@ vim.keymap.set("n", "ff", Telescope.find_files)
 
 -- Old files
 vim.keymap.set("n", "fo", Telescope.oldfiles)
+
+-- Diagnostics
+vim.keymap.set("n", "fd", Telescope.diagnostics)
+
+-- Current file
+vim.keymap.set("n", "fc", Telescope.current_buffer_fuzzy_find)

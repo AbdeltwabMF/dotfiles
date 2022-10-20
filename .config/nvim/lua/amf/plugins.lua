@@ -96,7 +96,7 @@ return require("packer").startup({
 			"akinsho/toggleterm.nvim",
 			tag = "*",
 			config = function()
-				require("toggleterm").setup()
+				require("amf.plugins.toggleterm")
 			end,
 		})
 
@@ -235,6 +235,7 @@ return require("packer").startup({
 			{ "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" },
 			{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+			{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
 		})
 
 		-- Editing to the MOON --

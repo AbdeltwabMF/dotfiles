@@ -3,34 +3,34 @@
 -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 -- vim.o.foldlevelstart = 99
 
-require('nvim-treesitter.configs').setup({
+require("nvim-treesitter.configs").setup({
 	-- nvim-treesitter/nvim-treesitter (self config)
 	auto_install = true,
 	ensure_installed = {
-		'c',
-		'lua',
-		'rust',
-		'go',
-		'javascript',
-		'typescript',
-		'tsx',
-		'markdown',
-		'markdown_inline',
-		'html',
-		'css',
-		'json',
-		'bash',
-		'bibtex',
-		'cpp',
-		'dockerfile',
-		'latex',
-		'make',
-		'python',
-		'ruby',
-		'solidity',
-		'scheme',
-		'yaml',
-		'sql',
+		"c",
+		"lua",
+		"rust",
+		"go",
+		"javascript",
+		"typescript",
+		"tsx",
+		"markdown",
+		"markdown_inline",
+		"html",
+		"css",
+		"json",
+		"bash",
+		"bibtex",
+		"cpp",
+		"dockerfile",
+		"latex",
+		"make",
+		"python",
+		"ruby",
+		"solidity",
+		"scheme",
+		"yaml",
+		"sql",
 	},
 	highlight = {
 		enable = true,
@@ -41,16 +41,16 @@ require('nvim-treesitter.configs').setup({
 		additional_vim_regex_highlighting = false,
 	},
 	indent = {
-	    enable = true,
+		enable = true,
 	},
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-		    init_selection = 'gs',
-		    -- NOTE: These are visual mode mappings
-		    node_incremental = 'gs',
-		    node_decremental = 'gS',
-		    scope_incremental = '<leader>gc',
+			init_selection = "gs",
+			-- NOTE: These are visual mode mappings
+			node_incremental = "gs",
+			node_decremental = "gS",
+			scope_incremental = "<leader>gc",
 		},
 	},
 	-- nvim-treesitter/nvim-treesitter-textobjects
@@ -61,16 +61,16 @@ require('nvim-treesitter.configs').setup({
 			lookahead = true,
 			keymaps = {
 				-- You can use the capture groups defined in textobjects.scm
-				['af'] = '@function.outer',
-				['if'] = '@function.inner',
-				['ac'] = '@class.outer',
-				['ic'] = '@class.inner',
-				['al'] = '@loop.outer',
-				['il'] = '@loop.inner',
-				['aa'] = '@parameter.outer',
-				['ia'] = '@parameter.inner',
-				['uc'] = '@comment.outer',
-				
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["al"] = "@loop.outer",
+				["il"] = "@loop.inner",
+				["aa"] = "@parameter.outer",
+				["ia"] = "@parameter.inner",
+				["uc"] = "@comment.outer",
+
 				-- Or you can define your own textobjects like this
 				-- ["iF"] = {
 				--     python = "(function_definition) @function",
@@ -83,34 +83,34 @@ require('nvim-treesitter.configs').setup({
 		swap = {
 			enable = true,
 			swap_next = {
-				['<leader>a'] = '@parameter.inner',
-				['<leader>f'] = '@function.outer',
-				['<leader>e'] = '@element',
+				["<leader>a"] = "@parameter.inner",
+				["<leader>f"] = "@function.outer",
+				["<leader>e"] = "@element",
 			},
 			swap_previous = {
-				['<leader>A'] = '@parameter.inner',
-				['<leader>F'] = '@function.outer',
-				['<leader>E'] = '@element',
+				["<leader>A"] = "@parameter.inner",
+				["<leader>F"] = "@function.outer",
+				["<leader>E"] = "@element",
 			},
 		},
 		move = {
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist
 			goto_next_start = {
-				[']f'] = '@function.outer',
-				[']]'] = '@class.outer',
+				["]f"] = "@function.outer",
+				["]]"] = "@class.outer",
 			},
 			goto_next_end = {
-				[']F'] = '@function.outer',
-				[']['] = '@class.outer',
+				["]F"] = "@function.outer",
+				["]["] = "@class.outer",
 			},
 			goto_previous_start = {
-				['[f'] = '@function.outer',
-				['[['] = '@class.outer',
+				["[f"] = "@function.outer",
+				["[["] = "@class.outer",
 			},
 			goto_previous_end = {
-				['[F'] = '@function.outer',
-				['[]'] = '@class.outer',
+				["[F"] = "@function.outer",
+				["[]"] = "@class.outer",
 			},
 		},
 	},
@@ -133,5 +133,14 @@ require('nvim-treesitter.configs').setup({
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
+	},
+	-- rainbow parentheses
+	rainbow = {
+		enable = true,
+		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		-- colors = {}, -- table of hex strings
+		-- termcolors = {} -- table of colour name strings
 	},
 })
