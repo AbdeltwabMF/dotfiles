@@ -56,6 +56,12 @@ return require("packer").startup({
 			"SmiteshP/nvim-navic",
 			requires = "neovim/nvim-lspconfig",
 		})
+		use({
+			"glepnir/dashboard-nvim",
+			config = function()
+				require("amf.plugins.dashboard")
+			end,
+		})
 
 		-- Editor UI Niceties --
 		use({
