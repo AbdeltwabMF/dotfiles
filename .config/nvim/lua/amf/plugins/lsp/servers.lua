@@ -44,15 +44,21 @@ local servers = {
 	"jsonls", -- Json
 	"yamlls", -- YAML
 	"bashls", -- bashls
-	"clangd", -- clangd
+	"clangd", -- C/C++
 	"cmake", -- cmake
-	"pyright", -- pyright
+	"pyright", -- python
 	"rust_analyzer", -- rust_analyzer
 	"texlab", -- texlab
 	"sumneko_lua", -- sumneko_lua
 	"dockerls", -- dockerls
 	"sqls", -- sqls
 	"emmet_ls", -- emmet_ls
+	"marksman", -- marksmen
+	"graphql", -- graphql
+	"jdtls", -- Java
+	"ruby_ls", -- Ruby
+	"solidity", -- Solidity
+	"tailwindcss", -- TailwindCSS
 }
 
 for _, server in ipairs(servers) do
