@@ -190,6 +190,23 @@ ins_left({
 	color = { fg = "#ffffff", gui = "bold" },
 })
 
+-- TODO: Separate this into a module
+ins_left({
+	function()
+		local command = "next-prayer --hybrid"
+		local tmp_file = "/tmp/nvim-next-prayer"
+		os.execute(command .. " > " .. tmp_file)
+		local f = io.open(tmp_file, "r")
+		if not f then
+			return ""
+		end
+		local line = f:read("*line")
+		f:close()
+		return line:lower()
+	end,
+	color = { fg = colors.orange, gui = "bold" },
+})
+
 ins_right({
 	"filetype",
 	cond = conditions.hide_in_width,

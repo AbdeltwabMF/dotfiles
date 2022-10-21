@@ -13,6 +13,14 @@ return require("packer").startup({
 		-- Required plugins --
 		use("nvim-lua/plenary.nvim")
 
+		-- Notifier
+		use({
+			"rcarriga/nvim-notify",
+			config = function()
+				require("amf.plugins.notify")
+			end,
+		})
+
 		-- Theme, Icons, Statusbar, Bufferbar --
 		use({
 			"akinsho/bufferline.nvim",
@@ -106,12 +114,6 @@ return require("packer").startup({
 			event = "WinScrolled",
 			config = function()
 				require("neoscroll").setup({ hide_cursor = false })
-			end,
-		})
-		use({
-			"rcarriga/nvim-notify",
-			config = function()
-				require("amf.plugins.notify")
 			end,
 		})
 

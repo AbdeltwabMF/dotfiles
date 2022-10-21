@@ -49,3 +49,8 @@ map("x", "A", ":<C-U>normal! ggVG<CR>")
 
 map("x", "<", "<gv")
 map("x", ">", ">gv")
+
+-- Session management
+map("n", "<leader>ss", "<CMD>SessionSave<CR>")
+map("n", "<leader>sl", "<CMD>SessionLoad<CR>")
+map("n", "<leader>sd", "<CMD>SessionDelete<CR>")
