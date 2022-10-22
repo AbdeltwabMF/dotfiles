@@ -84,3 +84,6 @@ super + shift + b
 
 super + shift + c
   gencs
+
+super + ctrl + f
+	seafont
