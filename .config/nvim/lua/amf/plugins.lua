@@ -20,6 +20,17 @@ return require("packer").startup({
 				require("amf.plugins.notify")
 			end,
 		})
+		use({
+			"folke/noice.nvim",
+			event = "VimEnter",
+			config = function()
+				require("amf.plugins.noice")
+			end,
+			requires = {
+				-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+				"MunifTanjim/nui.nvim",
+			},
+		})
 
 		-- Theme, Icons, Statusbar, Bufferbar --
 		use({
@@ -52,6 +63,7 @@ return require("packer").startup({
 				opt = true,
 			},
 		})
+		-- nui is a dependency of noice.nvim,
 		use({ "MunifTanjim/nui.nvim" })
 		use({
 			"folke/trouble.nvim",
@@ -117,17 +129,7 @@ return require("packer").startup({
 			end,
 		})
 
-		-- ale
-		-- Load on a combination of conditions: specific filetypes or commands
-		-- Also run code after load (see the "config" key)
-		use({
-			"w0rp/ale",
-			ft = { "sh", "zsh", "bash", "c", "cpp", "cmake", "html", "markdown", "racket", "vim", "tex" },
-			cmd = "ALEEnable",
-			config = "vim.cmd[[ALEEnable]]",
-		})
-
-		-- LSP | Completion
+		-- LSP
 		use({
 			"williamboman/mason.nvim",
 			config = function()
@@ -156,6 +158,24 @@ return require("packer").startup({
 			},
 		})
 		use({
+			"RubixDev/mason-update-all",
+			after = "mason.nvim",
+			config = function()
+				require("mason-update-all").setup()
+			end,
+		})
+
+		-- DAP Protocol
+		use({ "mfussenegger/nvim-dap" })
+		use({
+			"jayp0521/mason-nvim-dap.nvim",
+			config = function()
+				require("amf.plugins.lsp.mason-nvim-dap")
+			end,
+		})
+
+		-- Completion
+		use({
 			{
 				"hrsh7th/nvim-cmp",
 				event = "InsertEnter",
@@ -180,15 +200,6 @@ return require("packer").startup({
 			{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 		})
-		use({ "mfussenegger/nvim-dap" })
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			event = "BufRead",
-			config = function()
-				require("amf.plugins.lsp.null-ls")
-			end,
-		})
-
 		-- NOTE: nvim-autopairs needs to be loaded after nvim-cmp, so that <CR> would work properly
 		use({
 			"windwp/nvim-autopairs",
@@ -198,11 +209,24 @@ return require("packer").startup({
 				require("amf.plugins.pairs")
 			end,
 		})
-
-		-- Development
 		use({ "github/copilot.vim" })
 
-		-- File Manager - nnn
+		-- Null-ls
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			event = "BufRead",
+			config = function()
+				require("amf.plugins.lsp.null-ls")
+			end,
+		})
+		use({
+			"jayp0521/mason-null-ls.nvim",
+			config = function()
+				require("amf.plugins.lsp.mason-null-ls")
+			end,
+		})
+
+		-- File Manager
 		use({
 			"luukvbaal/nnn.nvim",
 			config = function()
@@ -222,7 +246,7 @@ return require("packer").startup({
 			end,
 		})
 
-		-- Treesitter: Better Highlights --
+		-- Treesitter: Better Highlights
 		use({
 			{
 				"nvim-treesitter/nvim-treesitter",
@@ -240,14 +264,13 @@ return require("packer").startup({
 			{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
 		})
 
-		-- Editing to the MOON --
+		-- Editing to the MOON
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
 				require("Comment").setup()
 			end,
 		})
-		use({ "numToStr/prettierrc.nvim" })
 		use({
 			"tpope/vim-surround",
 			event = "BufRead",
@@ -267,7 +290,7 @@ return require("packer").startup({
 			-- NOTE: splitjoin won't work with `BufRead` event
 		})
 
-		-- Utilities
+		-- Search and Replace
 		use({
 			{
 				"nvim-telescope/telescope.nvim",

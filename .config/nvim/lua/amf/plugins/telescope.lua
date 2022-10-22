@@ -81,3 +81,6 @@ vim.keymap.set("n", "fd", Telescope.diagnostics)
 
 -- Current file
 vim.keymap.set("n", "fc", Telescope.current_buffer_fuzzy_find)
+
+-- Spell suggestions
+vim.keymap.set("n", "fs", Telescope.spell_suggest)

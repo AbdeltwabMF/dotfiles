@@ -1,5 +1,5 @@
 local notify = require("notify")
-vim.notify = notify
+-- vim.notify = notify -- noice take care of this
 
 notify.setup({
 	background_colour = "#1e222a",

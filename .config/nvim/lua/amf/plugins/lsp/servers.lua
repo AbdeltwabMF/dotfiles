@@ -1,7 +1,7 @@
 local lsp = require("lspconfig")
 local U = require("amf.plugins.lsp.utils")
 local navic = require("nvim-navic")
-vim.notify = require("notify")
+-- vim.notify = require("notify") -- noice take care of this
 
 ---Common perf related flags for all the LSP servers
 local flags = {

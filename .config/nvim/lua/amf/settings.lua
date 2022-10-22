@@ -1,11 +1,11 @@
 local g = vim.g -- global variable
 local o = vim.o -- options
 
-vim.cmd('syntax on')
-vim.api.nvim_command('filetype plugin indent on')
+vim.cmd("syntax on")
+vim.api.nvim_command("filetype plugin indent on")
 
 o.termguicolors = true
-o.background = 'dark'
+o.background = "dark"
 
 -- Do not save when switching buffers
 -- o.hidden = true
@@ -21,7 +21,7 @@ o.scrolloff = 8
 o.number = true
 o.numberwidth = 2
 o.relativenumber = true
-o.signcolumn = 'yes:1'
+o.signcolumn = "yes:1"
 o.cursorline = true
 
 -- Better editing experience
@@ -34,7 +34,7 @@ o.wrap = true
 o.tabstop = 2
 o.shiftwidth = 2
 o.softtabstop = -1 -- If negative, shiftwidth value is used
-o.mouse = 'a'
+o.mouse = "a"
 o.hlsearch = false
 o.breakindent = true
 -- o.list = true
@@ -43,7 +43,7 @@ o.breakindent = true
 -- o.formatoptions = 'qrn1'
 
 -- Makes neovim and host OS clipboard play nicely with each other
-o.clipboard = 'unnamedplus'
+o.clipboard = "unnamedplus"
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
@@ -66,7 +66,7 @@ o.splitright = true
 o.splitbelow = true
 
 -- Preserve view while jumping
-o.jumpoptions = 'view'
+o.jumpoptions = "view"
 
 -- BUG: this won't update the search count after pressing `n` or `N`
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
@@ -79,5 +79,5 @@ o.jumpoptions = 'view'
 -- o.foldminlines = 1
 
 -- Map <leader> to comma
-g.mapleader = ','
-g.maplocalleader = ','
+g.mapleader = ","
+g.maplocalleader = ","
