@@ -31,7 +31,7 @@ nls.setup({
 		fmt.stylua,
 		fmt.gofmt,
 		fmt.shfmt.with({
-			extra_args = { "-i", 4, "-ci", "-sr" },
+			extra_args = { "-i", 2, "-ci", "-sr" },
 		}),
 		-----------------
 		-- DIAGNOSTICS --
