@@ -6,21 +6,21 @@
 
 # onetime
 # Uncomment to use Xresources colors/settings on startup
-xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources/gruvbox-dark.xresources &
-setbg &                 # set the background with the `setbg` script
-us-layout &             # fix layout
-xset r rate 300 50 &		# speed xrate up
-screenshot &            # Security check
+xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/x11/xresources/gruvbox-dark.xresources &
+setbg &              # set the background with the `setbg` script
+us-layout &          # fix layout
+xset r rate 300 50 & # speed xrate up
+screenshot &         # Security check
 
-picom &                 # transparency
-dunst &                 # for notifications
-udiskie &								# for automount removable devices
+picom &   # transparency
+dunst &   # for notifications
+udiskie & # for automount removable devices
 xbacklight -time 500 -set 30 &
 pamixer --set-volume 30 &
-sxhkd &                 # bind Keys
-unclutter &							# remove mouse when idle
-xidlehook --detect-sleep --not-when-fullscreen --timer 900 "slock -m 'Allah is always watching you' us-layout" "" &   # autolock
+sxhkd &                                                                                                             # bind Keys
+unclutter &                                                                                                         # remove mouse when idle
+xidlehook --detect-sleep --not-when-fullscreen --timer 900 "slock -m 'Allah is always watching you' us-layout" "" & # autolock
 
 # invoke emacsclient -c with flag -c to create a new frame instead of trying  to  use  the  current  Emacs frame
 # however when you done with emacs frame you should kill it using `C-x 5 0` instead of `MOD+Shift+q` OR `C-x C-c`
-emacs --daemon &       # emacs server
+emacs --daemon & # emacs server
