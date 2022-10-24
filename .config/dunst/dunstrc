@@ -7,15 +7,15 @@
     origin = top-right
 		width = (0, 683)
 		height = 375
-		offset = 0x18
+		offset = 11x27
 
 		notification_limit = 3
     indicate_hidden = true
 
-    transparency = 20
+    transparency = 10
 
-    separator_height = 8
-		separator_color = "#FFDD23"
+    separator_height = 4
+		separator_color = "#d5c5c5"
     padding = 8
     horizontal_padding = 8
 
@@ -23,9 +23,9 @@
 
 		sort = true
 
-    idle_threshold = 99
+    idle_threshold = 60
 
-		font = Fantasque Sans Mono 14
+		font = FantasqueSansMono Nerd Font Mono 14
 
     line_height = 0
     markup = full
@@ -47,19 +47,19 @@
     class = Dunst
 
 [urgency_low]
-    background = "#3F333D"
-    foreground = "#FFFFF2"
-    frame_color = "#FABDA9"
+    background = "#252525"
+    foreground = "#bababa"
+    frame_color = "#252525"
     timeout = 10
-
+ 
 [urgency_normal]
-    background = "#0F0664"
-    foreground = "#FFFFF1"
-    frame_color = "#9ABDEF"
+    background = "#033153"
+    foreground = "#9cd0f9"
+    frame_color = "#033153"
     timeout = 15
 
 [urgency_critical]
-    background = "#CC2421"
-    foreground = "#EBDBB2"
-    frame_color = "#FABD2F"
+    background = "#650403"
+    foreground = "#ef8282"
+    frame_color = "#650403"
     timeout = 0
