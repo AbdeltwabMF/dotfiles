@@ -165,6 +165,14 @@ return require("packer").startup({
 			end,
 		})
 
+		-- Latex
+		use({
+			"lervag/vimtex",
+			config = function()
+				require("amf.plugins.vimtex")
+			end,
+		})
+
 		-- DAP Protocol
 		use({ "mfussenegger/nvim-dap" })
 		use({

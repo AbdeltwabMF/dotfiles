@@ -5,18 +5,18 @@
 
 # Environmental variables
 [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env" ]] &&
-    source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env"
+  source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env"
 
 pgrep mpd || mpd
 ssh-add
 
 if pacman -Qs libxft-bgra > /dev/null 2>&1; then
-    # Start graphical server on user's current tty if not already running.
-    if [[ "$(tty)" = "/dev/tty1" ]] && ! pidof -s Xorg > /dev/null 2>&1; then
-        printf "%s: " "Which desktop environment do you want to use"
-        read -r desktop_environment
-        exec startx "${XINITRC}" "$desktop_environment"
-    fi
+  # Start graphical server on user's current tty if not already running.
+  if [[ "$(tty)" = "/dev/tty1" ]] && ! pidof -s Xorg > /dev/null 2>&1; then
+    printf "%s: " "Which desktop environment do you want to use"
+    read -r desktop_environment
+    exec startx "${XINITRC}" "$desktop_environment"
+  fi
 else
-    echo "Oops.. something went wrong!"
+  echo "Oops.. something went wrong!"
 fi

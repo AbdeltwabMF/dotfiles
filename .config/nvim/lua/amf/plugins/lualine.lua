@@ -114,7 +114,7 @@ ins_left({
 			["!"] = "SHELL",
 			t = "TERMINAL",
 		}
-		return "" .. " " .. mode_text[vim.fn.mode()]
+		return "" .. " " .. mode_text[vim.fn.mode()]
 	end,
 	color = function()
 		-- auto change color according to neovims mode
