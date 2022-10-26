@@ -1,0 +1,5 @@
+$pdflatex = "pdflatex -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1";
+
+
+# to compile latex file use:
+# latexmk -pdf -output-directory={output-directory} {sourcefile.tex}
