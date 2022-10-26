@@ -32,8 +32,8 @@ map("n", "<leader>]", "<CMD>bn<CR>")
 map("n", "''", "<CMD>b#<CR>")
 
 -- Copying the vscode behaviour of making tab splits
+map("n", "<C-]>", "<CMD>split<CR>")
 map("n", "<C-\\>", "<CMD>vsplit<CR>")
-map("n", "<A-\\>", "<CMD>split<CR>")
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
@@ -44,8 +44,8 @@ map("x", "<C-k>", ":move '<-2<CR>gv=gv")
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
-map("o", "A", ":<C-U>normal! mzggVG<CR>`z")
-map("x", "A", ":<C-U>normal! ggVG<CR>")
+map("o", "Z", ":<C-U>normal! mzggVG<CR>`z")
+map("x", "Z", ":<C-U>normal! ggVG<CR>")
 
 map("x", "<", "<gv")
 map("x", ">", ">gv")
@@ -53,4 +53,3 @@ map("x", ">", ">gv")
 -- Session management
 map("n", "<leader>ss", "<CMD>SessionSave<CR>")
 map("n", "<leader>sl", "<CMD>SessionLoad<CR>")
-map("n", "<leader>sd", "<CMD>SessionDelete<CR>")

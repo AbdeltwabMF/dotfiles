@@ -2,6 +2,8 @@ local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local themes = require("telescope.themes")
 
+require("telescope").load_extension("yabs")
+
 require("telescope").setup({
 	defaults = {
 		prompt_prefix = " ❯ ",
@@ -84,3 +86,12 @@ vim.keymap.set("n", "fc", Telescope.current_buffer_fuzzy_find)
 
 -- Spell suggestions
 vim.keymap.set("n", "fs", Telescope.spell_suggest)
+
+-- Man pages
+vim.keymap.set("n", "fm", Telescope.man_pages)
+
+-- Git files
+vim.keymap.set("n", "fg", Telescope.git_files)
+
+-- Keybindings
+vim.keymap.set("n", "fk", Telescope.keymaps)

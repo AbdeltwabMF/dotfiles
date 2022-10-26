@@ -290,12 +290,31 @@ return require("packer").startup({
 			},
 		})
 		use({
+			"ggandor/leap.nvim",
+			config = function()
+				require("amf.plugins.leap")
+			end,
+		})
+		use({
+			"mg979/vim-visual-multi",
+			branch = "master",
+			config = function()
+				require("amf.plugins.vim-visual-multi")
+			end,
+		})
+		use({
 			"wellle/targets.vim",
 			event = "BufRead",
 		})
 		use({
 			"AndrewRadev/splitjoin.vim",
 			-- NOTE: splitjoin won't work with `BufRead` event
+		})
+		use({
+			"Pocco81/true-zen.nvim",
+			config = function()
+				require("amf.plugins.true-zen")
+			end,
 		})
 
 		-- Search and Replace
@@ -319,6 +338,14 @@ return require("packer").startup({
 				"nvim-telescope/telescope-symbols.nvim",
 				after = "telescope.nvim",
 			},
+		})
+		-- Build system
+		use({
+			"pianocomposer321/yabs.nvim",
+			config = function()
+				require("amf.plugins.yabs")
+			end,
+			requires = { "nvim-lua/plenary.nvim" },
 		})
 	end,
 	config = {
