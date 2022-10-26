@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/bash
 #
 # ~/.env
 # Environmental variables are set here.
@@ -7,7 +7,11 @@ unsetopt PROMPT_SP
 
 # PATH settings start:
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:${$(find $HOME/.local/sbin -type d ! \( -path $HOME/.local/sbin/.git -prune \) -printf %p:)%%:}"
+export PATH="$PATH:$HOME/.local/sbin/dmenu"
+export PATH="$PATH:$HOME/.local/sbin/general"
+export PATH="$PATH:$HOME/.local/sbin/personal"
+export PATH="$PATH:$HOME/.local/sbin/statusbar"
+# export PATH="$PATH:${$(find '$HOME'/.local/sbin -type d ! \( -path '$HOME'/.local/sbin/.git -prune \) -printf %p:)%%:}"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/gem/ruby/3.0.0/bin"
 ## PATH settings end.
@@ -61,11 +65,12 @@ export IPFS_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/ipfs"
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
 
 # Development tools start:
-export JAVA_HOME="/usr/lib/jvm/java-18-openjdk"
-export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+openjdk_version="$(java --version 2> /dev/null | awk '/^openjdk/ {print $2}' | sed 's/\..*$//g')"
+export JAVA_HOME="/usr/lib/jvm/java-${openjdk_version}-openjdk"
+export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 
 # You might want to specify a new location if the default location is low on disk space.
@@ -109,10 +114,10 @@ export LESSHISTFILE="-"
 # Uniform look for Qt and GTK applications start:
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export XCURSOR_PATH="${XCURSOR_PATH}:~/.local/share/icons"
-export QT_QPA_PLATFORMTHEME=gtk2	# Have QT use gtk2 theme instead of qt5ct
+export QT_QPA_PLATFORMTHEME=gtk2 # Have QT use gtk2 theme instead of qt5ct
 export QT_QPA_PLATFORMTHEME=qt6gtk2
-export QT_STYLE_OVERRIDE=gtk2	# Use Adwaita theme for QT
-export AWT_TOOLKIT="MToolkit wmname LG3D"	# May have to install wmname
+export QT_STYLE_OVERRIDE=gtk2             # Use Adwaita theme for QT
+export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 ## Uniform look for Qt and GTK applications end.
 
 # Locale settings start:
@@ -122,16 +127,23 @@ export LANG='en_US.UTF-8'
 
 # NNN file manager env variables start:
 export NNN_BMS='o:~/vault/documents/org;'
-export NNN_SSHFS="sshfs -o follow_symlinks"         # make sshfs follow symlinks on the remote
-export NNN_COLORS="2136"                            # use a different color for each context
-export NNN_TRASH=1                                  # trash (needs trash-cli) instead of delete
+export NNN_SSHFS="sshfs -o follow_symlinks" # make sshfs follow symlinks on the remote
+export NNN_COLORS="2136"                    # use a different color for each context
+export NNN_TRASH=1                          # trash (needs trash-cli) instead of delete
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='a:autojump;b:boom;c:bulknew;d:cdpath;e:chksum;f:cmusq;g:diffs;h:dragdrop;i:dups;g:finder;k:fixname;l:fzcd;m:fzhist;n:fzopen;o:fzplug;p:getplugs;q:gpgd;r:gpge;s:gutenread;t:imgresize;u:imgur;v:imgview;w:ipinfo;x:kdeconnect;y:launch;z:mimelist;A:moclyrics;B:mocq;C:mp3conv;D:mtpmount;E:nbak;F:nmount;G:nuke;H:oldbigfile;I:organize;G:pdfread;K:preview-tabbed;L:preview-tui;M:pskill;N:readme.md;O:renamer;P:ringtone;Q:rsynccp;R:splitjoin;S:suedit;T:togglex;U:umounttree;V:upload;W:wallpaper;X:x2sel;Y:xdgdefault;'
 ## NNN file manager env variables end.
 
 # Authorization, authentication and credentials start:
-eval "$(dbus-launch)"
-export DBUS_SESSION_BUS_ADDRESS
+
+# test for an existing bus daemon, just to be safe
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+  # if not found, launch a new one
+  eval "$(dbus-launch --sh-syntax)"
+  export DBUS_SESSION_BUS_ADDRESS
+  echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+  echo "$DBUS_SESSION_BUS_ADDRESS" > /tmp/dbus-current-session
+fi
 
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
@@ -148,4 +160,3 @@ export GPG_TTY
 ## Authorization, authentication and credentials end.
 
 export VSCODE_PORTABLE="${XDG_DATA_HOME:-$HOME/.local/share}/vscode"
-
