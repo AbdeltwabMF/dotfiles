@@ -17,35 +17,35 @@ alias \
 
 # Sudo not required for some system commands:
 declare -a sbin
-sbin=( netstat mount umount sv su pacman updatedb
-reboot intel_gpu_top docker poweroff vnstat aireplay-ng mandb
-airodump-ng aircrack-ng airmon-ng );
+sbin=(netstat mount umount sv su pacman updatedb
+  reboot intel_gpu_top docker poweroff vnstat aireplay-ng mandb
+  airodump-ng aircrack-ng airmon-ng)
 
 for ((i = 1; i <= ${#sbin[@]}; i++)); do
   command="${sbin[$i]}"
   alias ${sbin[$i]}="sudo ${command}"
-done;
+done
 
 # Colorize commands when possible:
 alias \
-	grep="grep --color=auto" \
-	diff="diff --color=auto"
+  grep="grep --color=auto" \
+  diff="diff --color=auto"
 
 # These common commands are just too long! Abbreviate them:
 alias \
-	trem="transmission-remote" \
-	v="nvim" \
+  trem="transmission-remote" \
+  v="nvim" \
   se="sudo nvim" \
-	z="zathura" \
-	l="lsd -a" \
-	ll="lsd -alh" \
-	lll="lsd --tree" \
-	xco="xclip -o" \
-	xci="xclip -i -selection clipboard" \
-	pdf2png="pdftoppm -singlefile -png" \
-	pdf2pngs="pdftoppm -png" \
-	drdr="dragon-drag-and-drop"
-  cwd="pwd | tr -d '\r\n' | xclip -selection clipboard" \
+  z="zathura" \
+  l="lsd -a" \
+  ll="lsd -alh" \
+  lll="lsd --tree" \
+  xco="xclip -o" \
+  xci="xclip -i -selection clipboard" \
+  pdf2png="pdftoppm -singlefile -png" \
+  pdf2pngs="pdftoppm -png" \
+  drdr="dragon-drag-and-drop"
+cwd="pwd | tr -d '\r\n' | xclip -selection clipboard" \
   cp="cp -iv" \
   mv="mv -iv" \
   untar="tar xvf"
@@ -54,19 +54,19 @@ alias \
 # Download single video
 yt() {
   yt-dlp -i --add-metadata -o \
-    "$HOME/vault/downloads/Videos/%(title)s.%(ext)s" "$@"
+    "$HOME/vault/download/videos/%(title)s.%(ext)s" "$@"
 }
 
 # Download YouTube playlist videos in separate directory indexed by video order in a playlist
 ytpl() {
   yt-dlp -i --add-metadata -o \
-    "$HOME/vault/downloads/Videos/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
+    "$HOME/vault/download/videos/playlist/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "$@"
 }
 
 # Download audio Only
 ytx() {
   yt-dlp -x -i --add-metadata -o --embed-thumbnail --audio-format "mp3" \
-    "$HOME/vault/audios/Music/%(title)s.%(ext)s" "$@"
+    "$HOME/vault/download/music/%(title)s.%(ext)s" "$@"
 }
 
 # Downloading a portion of video
@@ -76,7 +76,7 @@ ytx() {
 ytp() {
   ffmpeg -ss "$1" -to "$2" -i \
     "$(yt-dlp -f best -i --add-metadata --get-url "$3")" \
-    "$HOME/vault/downloads/Videos/""$(yt-dlp --get-title "$3")".mp4
+    "$HOME/vault/download/videos/short/""$(yt-dlp --get-title "$3")".mp4
 }
 
 # Credentials aliases:
@@ -85,22 +85,22 @@ alias pubssh="more ~/.ssh/id_rsa.pub | xclip -selection clipboard | echo '=> Pub
 
 # Backup functions:
 bkup() {
-	tar cf - "${1}" | 7za a -si "${1}.tar.7z"
+  tar cf - "${1}" | 7za a -si "${1}.tar.7z"
 }
 
 # to restore your backup:
 rstr() {
-	7za x -so "${1}" | tar xf -
+  7za x -so "${1}" | tar xf -
 }
 
 # Super linter powered by docker
 slint() {
-	docker container run -e RUN_LOCAL=true -v "$1":/tmp/lint github/super-linter
+  docker container run -e RUN_LOCAL=true -v "$1":/tmp/lint github/super-linter
 }
 
 # ex - archive extractor
 # usage: ex <file>
-ex () {
+ex() {
   if [[ -f $1 ]]; then
     case "$1" in
       *.tar.bz2) tar xjf "$1" ;;
@@ -128,7 +128,7 @@ ex () {
 # Instantiate a new JavaSE Maven project
 # Usage: mvnse <artifact-id> <group-id>
 mvnse() {
-	mvn archetype:generate \
+  mvn archetype:generate \
     -DartifactId="${1:-test}" \
     -DgroupId="${2:-amf}" \
     -DarchetypeArtifactId=maven-archetype-quickstart \

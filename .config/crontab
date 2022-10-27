@@ -1,5 +1,8 @@
 0 * * * * /usr/bin/newsboat -x reload
-0 * * * * /usr/bin/sudo /usr/bin/updatedb
-0 * * * * /usr/bin/sudo /usr/bin/mandb
-50 23 */7 * * $HOME/.local/sbin/general/pacfet
+0 0 * * * /usr/bin/sudo /usr/bin/updatedb
+0 0 * * * /usr/bin/sudo /usr/bin/mandb
+50 23 */6 * * $HOME/.local/sbin/general/pacfet
 0 0 * * * /usr/bin/crontab -l > $HOME/.config/crontab
+
+*/25 * * * * $HOME/.local/sbin/personal/pomodoro
+0 8 * * * $HOME/.local/sbin/personal/quote-ar
