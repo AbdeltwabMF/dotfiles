@@ -1,8 +1,15 @@
-0 * * * * /usr/bin/newsboat -x reload
+# Update Databases
 0 0 * * * /usr/bin/sudo /usr/bin/updatedb
 0 0 * * * /usr/bin/sudo /usr/bin/mandb
-50 23 */6 * * $HOME/.local/sbin/general/pacfet
+
+# Cronie Directory
+0,50 * * * *  $HOME/.local/sbin/cronie/cr-pomodoro
+*/10 * * * *  $HOME/.local/sbin/cronie/cr-mail-sync
+0 6 * * *	    $HOME/.local/sbin/cronie/cr-quote-ar
+30 23 */6 * *	$HOME/.local/sbin/cronie/cr-update-pacman
+
+# Backups
 0 0 * * * /usr/bin/crontab -l > $HOME/.config/crontab
 
-*/25 * * * * $HOME/.local/sbin/personal/pomodoro
-0 8 * * * $HOME/.local/sbin/personal/quote-ar
+# RSS Feed
+0 * * * * /usr/bin/newsboat -x reload
