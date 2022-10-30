@@ -15,8 +15,8 @@ screenshot &         # Security check
 picom &   # transparency
 dunst &   # for notifications
 udiskie & # for automount removable devices
-xbacklight -time 500 -set 30 &
-pamixer --set-volume 30 &
+xbacklight -time 500 -set 15 &
+pamixer --set-volume 15 &
 sxhkd &                                                                                                                      # bind Keys
 unclutter &                                                                                                                  # remove mouse when idle
 xidlehook --detect-sleep --not-when-fullscreen --timer 900 "slock -m 'Allah is always watching you' toggle-layout 'us'" "" & # autolock
