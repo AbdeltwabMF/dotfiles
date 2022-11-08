@@ -7,11 +7,11 @@ unsetopt PROMPT_SP
 
 # PATH settings start:
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/sbin/dmenu"
-export PATH="$PATH:$HOME/.local/sbin/general"
-export PATH="$PATH:$HOME/.local/sbin/personal"
-export PATH="$PATH:$HOME/.local/sbin/statusbar"
 export PATH="$PATH:$HOME/.local/sbin/cronie"
+export PATH="$PATH:$HOME/.local/sbin/statusbar"
+export PATH="$PATH:$HOME/.local/sbin/dmenu"
+export PATH="$PATH:$HOME/.local/sbin/dunst"
+export PATH="$PATH:$HOME/.local/sbin/general"
 # export PATH="$PATH:${$(find '$HOME'/.local/sbin -type d ! \( -path '$HOME'/.local/sbin/.git -prune \) -printf %p:)%%:}"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/npm/bin"
 export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/gem/ruby/3.0.0/bin"
@@ -115,8 +115,7 @@ export LESSHISTFILE="-"
 # Uniform look for Qt and GTK applications start:
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export XCURSOR_PATH="${XCURSOR_PATH}:~/.local/share/icons"
-export QT_QPA_PLATFORMTHEME=gtk2 # Have QT use gtk2 theme instead of qt5ct
-export QT_QPA_PLATFORMTHEME=qt6gtk2
+export QT_QPA_PLATFORMTHEME=gtk3          # Have QT use gtk2 theme instead of qt5ct
 export QT_STYLE_OVERRIDE=gtk2             # Use Adwaita theme for QT
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 ## Uniform look for Qt and GTK applications end.

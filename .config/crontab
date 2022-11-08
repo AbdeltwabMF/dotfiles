@@ -4,7 +4,7 @@
 
 # Cronie Directory
 0,50 * * * *  $HOME/.local/sbin/cronie/cr-pomodoro
-*/10 * * * *  $HOME/.local/sbin/cronie/cr-mail-sync
+*/10 * * * *  $HOME/.local/sbin/cronie/cr-sync-mail
 0 6 * * *	    $HOME/.local/sbin/cronie/cr-quote-ar
 30 23 */6 * *	$HOME/.local/sbin/cronie/cr-update-pacman
 

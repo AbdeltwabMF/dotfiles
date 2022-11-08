@@ -1,18 +1,18 @@
 # XF86* keys
 XF86AudioMute
-  volume toggle
+  set-volume toggle
 
 XF86AudioLowerVolume
-  volume down
+  set-volume down
 
 XF86AudioRaiseVolume
-  volume up
+  set-volume up
 
 XF86MonBrightnessUp
-  brightness up
+  set-brightness up
 
 XF86MonBrightnessDown
-  brightness down
+  set-brightness down
 
 ########################
 
@@ -38,7 +38,7 @@ super + ctrl + { k, e, j, n, m, d, l, s }
   { dmenu_kill, dmenu_exit, dmenu_emoji, dmenu_man, dmenu_mount, dmenu_ytdl, dmenu_pass, dmenu_seafont }
 
 super + shift + { q, Arabic_dad }
-  { closefocus, closefocus }
+  { x-close-focus-window, x-close-focus-window }
 
 super + alt + { p, b, z, g, e, l, t }
   { pcmanfm, brave, zathura, gimp, emacs, librewolf, telegram-desktop }
@@ -80,7 +80,7 @@ super + shift + Return;
   tabbed -r 2 st -w ''
 
 super + shift + b
-  setbg
+  set-wallpaper
 
 super + shift + c
-  gencolorscheme
+  gen-color-scheme

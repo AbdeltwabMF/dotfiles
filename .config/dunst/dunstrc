@@ -7,15 +7,15 @@
     origin = top-right
 		width = (0, 683)
 		height = 375
-		offset = 11x27
+		offset = 10x27
 
-		notification_limit = 3
+		notification_limit = 4
     indicate_hidden = true
 
-    transparency = 10
+    transparency = 0
 
     separator_height = 4
-		separator_color = "#d5c5c5"
+		separator_color = "#484848"
     padding = 8
     horizontal_padding = 8
 
@@ -47,19 +47,33 @@
     class = Dunst
 
 [urgency_low]
-    background = "#252525"
-    foreground = "#bababa"
-    frame_color = "#252525"
-    timeout = 10
+    background = "#ebf7ee"
+    foreground = "#333c48"
+    frame_color = "#bee5c8"
+    timeout = 20
  
 [urgency_normal]
-    background = "#033153"
-    foreground = "#9cd0f9"
-    frame_color = "#033153"
-    timeout = 15
+    background = "#e3edf8"
+    foreground = "#333c48"
+    frame_color = "#abcdf1"
+    timeout = 30
 
 [urgency_critical]
-    background = "#650403"
-    foreground = "#ef8282"
-    frame_color = "#650403"
+    background = "#fcedea"
+    foreground = "#333c48"
+    frame_color = "#f5c5bb"
     timeout = 0
+
+
+# Rules
+[mail]
+	summary = "E-Mail"
+	script = dunst-email-sound
+
+[pacman]
+	summary = "Repository Sync"
+	script = dunst-pacman-sound
+
+[telegram]
+	summary = "*Telegram*"
+	script = dunst-telegram-sound

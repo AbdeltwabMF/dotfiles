@@ -7,16 +7,16 @@
 # onetime
 # Uncomment to use Xresources colors/settings on startup
 xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/x11/xresources/gruvbox-dark.xresources &
-setbg &              # set the background with the `setbg` script
 toggle-layout "us" & # fix layout
 xset r rate 300 50 & # speed xrate up
-screenshot &         # Security check
+webcam-shot &        # Security check
 
-picom &   # transparency
-dunst &   # for notifications
-udiskie & # for automount removable devices
-xbacklight -time 500 -set 15 &
-pamixer --set-volume 15 &
+picom &         # transparency
+dunst &         # for notifications
+udiskie &       # for automount removable devices
+set-wallpaper & # set the background wallpaper
+set-brightness set 15 &
+set-volume set 15 &
 sxhkd &                                                                                                                      # bind Keys
 unclutter &                                                                                                                  # remove mouse when idle
 xidlehook --detect-sleep --not-when-fullscreen --timer 900 "slock -m 'Allah is always watching you' toggle-layout 'us'" "" & # autolock

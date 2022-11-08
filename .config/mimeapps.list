@@ -4,7 +4,7 @@ image/jpeg=image.desktop
 image/gif=image.desktop
 image/jpg=image.desktop
 video/x-matroska=media.desktop
-x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-CJA8U1.desktop
 text/x-c=text.desktop
 application/pdf=pdf.desktop
 text/plain=text.desktop
@@ -33,12 +33,13 @@ text/x-java=text.desktop
 text/x-tex=text.desktop
 image/webp=image.desktop
 text/x-script.python=text.desktop
+application/x-xdg-protocol-tg=telegramdesktop.desktop
 
 [Added Associations]
-x-scheme-handler/tg=userapp-Telegram Desktop-B0QR90.desktop;
 x-scheme-handler/magnet=userapp-transmission-gtk-52L4C1.desktop;
 text/plain=org.xfce.mousepad.desktop;
 x-scheme-handler/mailto=xfce4-mail-reader.desktop;
 application/octet-stream=text.desktop;mpv.desktop;
 image/png=org.xfce.ristretto.desktop;sxiv.desktop;
 image/x-portable-pixmap=sxiv.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-CJA8U1.desktop;
