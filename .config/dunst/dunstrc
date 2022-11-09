@@ -71,9 +71,18 @@
 	script = dunst-email-sound
 
 [pacman]
-	summary = "Repository Sync"
-	script = dunst-pacman-sound
+	summary = "Pacman"
+	script = dunst-heytackalook-sound
 
 [telegram]
 	summary = "*Telegram*"
-	script = dunst-telegram-sound
+	script = dunst-newmessage-sound
+
+# FFMPEG
+[ffmpeg-end]
+	body = "*Record ended*"
+	script = dunst-done-sound
+
+[ffmpeg-start]
+	body = "*recording*"
+	script = dunst-ok-sound
