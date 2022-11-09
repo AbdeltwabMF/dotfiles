@@ -31,8 +31,8 @@ super + grave
 super + d
   dmenu_run
 
-super + { n, t, c, m, p, u, r, a }
-  $TERMINAL -e { nnn, htop, calc, neomutt, castero, ncmpcpp, newsboat, calcurse }
+super + { n, c, m, p, u, r, a }
+  $TERMINAL -e { nnn, calc, neomutt, castero, ncmpcpp, newsboat, calcurse }
 
 super + ctrl + { k, e, j, n, m, d, l, s }
   { dmenu_kill, dmenu_exit, dmenu_emoji, dmenu_man, dmenu_mount, dmenu_ytdl, dmenu_pass, dmenu_seafont }
@@ -84,3 +84,6 @@ super + shift + b
 
 super + shift + c
   gen-color-scheme
+
+super + t
+	fv-toggle-tts

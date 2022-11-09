@@ -9,7 +9,7 @@
 		height = 375
 		offset = 10x27
 
-		notification_limit = 4
+		notification_limit = 3
     indicate_hidden = true
 
     transparency = 0
@@ -86,3 +86,22 @@
 [ffmpeg-start]
 	body = "*recording*"
 	script = dunst-ok-sound
+
+[battery-low]
+	summary = "Battery"
+	category = warn
+	script = dunst-pickmeup-sound
+
+[adapter-off]
+	summary = "Battery"
+	body = "*goes off-line*"
+	script = dunst-hmm-sound
+
+[adapter-on]
+	summary = "Battery"
+	body = "*goes on-line*"
+	script = dunst-itsmeagain-sound
+
+[kill]
+	summary = "Kill -9"
+	script = dunst-completed-sound
