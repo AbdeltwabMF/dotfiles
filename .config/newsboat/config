@@ -1,7 +1,7 @@
 # show-read-feeds no
 # auto-reload yes
 
-external-url-viewer "urlscan -dc -r 'linkhandler {}'"
+external-url-viewer "urlscan -dc -r 'link-handler {}'"
 
 bind-key j down
 bind-key k up
@@ -29,13 +29,15 @@ color listfocus_unread color5 default bold
 color info color7 black bold
 color article color7 default bold
 
-browser linkhandler
+browser link-handler
 macro , open-in-browser
-macro a set browser "youtube-dl -x --audio-format 'mp3' -i --add-metadata --embed-thumbnail -o '$HOME/vault/ods/Music/%(title)s.%(ext)s'" ; open-in-browser ; set browser linkhandler
-macro v set browser "setsid -f mpv" ; open-in-browser ; set browser linkhandler
-macro w set browser "lynx" ; open-in-browser ; set browser linkhandler
-macro d set browser "dmenu_ytdl" ; open-in-browser ; set browser linkhandler
-macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser linkhandler
+# Choose to watch or download (video and audio)
+macro d set browser "dmenu_ytdl"; open-in-browser; set browser link-handler
+# Play with 360p -- For productivity
+macro v set browser "setsid -f mpv --ytdl-format=18"; open-in-browser; set browser link-handler
+# Copy URL
+macro c set browser "echo %u | xclip -r -sel c"; open-in-browser; set browser link-handler
+macro b set browser "$BROWSER"; open-in-browser; set browser link-handler
 
 highlight all ".*_$" color1
 highlight all ".*__$" color4
