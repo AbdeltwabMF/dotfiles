@@ -112,13 +112,12 @@ export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export LESSHISTFILE="-"
 ## LESS end.
 
-# Uniform look for Qt and GTK applications start:
+# Qt and GTK configuration start:
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export XCURSOR_PATH="${XCURSOR_PATH}:~/.local/share/icons"
-export QT_QPA_PLATFORMTHEME=gtk3          # Have QT use gtk2 theme instead of qt5ct
-export QT_STYLE_OVERRIDE=gtk2             # Use Adwaita theme for QT
+export QT_QPA_PLATFORMTHEME=qt5ct         # Uniform look for Qt and GTK applications
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
-## Uniform look for Qt and GTK applications end.
+# Qt and GTK configuration end.
 
 # Locale settings start:
 export TZ='Africa/Cairo'

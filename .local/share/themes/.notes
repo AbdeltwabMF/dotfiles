@@ -1,0 +1,10 @@
+Adwaita is the default GNOME theme. 
+
+The GTK 3 version is included in the gtk3 package, while the GTK 2 version is in gnome-themes-extra.
+
+Make sure to install 
+	- gnome-themes-extra
+	- adwaita-qt and use qt5ct to uniform the look of qt and gtk
+	- gtk-engines
+
+
