@@ -17,3 +17,6 @@ MAILTO=cronlog
 
 # RSS Feed
 0 * * * * /usr/bin/newsboat -x reload
+
+# Test
+* * * * *  $HOME/.local/sbin/cronie/cr-gpg-keypass-test

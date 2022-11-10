@@ -50,13 +50,13 @@
     background = "#ebf7ee"
     foreground = "#333c48"
     frame_color = "#bee5c8"
-    timeout = 20
+    timeout = 10
  
 [urgency_normal]
     background = "#e3edf8"
     foreground = "#333c48"
     frame_color = "#abcdf1"
-    timeout = 30
+    timeout = 20
 
 [urgency_critical]
     background = "#fcedea"
