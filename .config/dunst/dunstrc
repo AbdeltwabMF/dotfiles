@@ -48,19 +48,19 @@
 
 [urgency_low]
     background = "#ebf7ee"
-    foreground = "#333c48"
+    foreground = "#008d23"
     frame_color = "#bee5c8"
     timeout = 10
  
 [urgency_normal]
     background = "#e3edf8"
-    foreground = "#333c48"
+    foreground = "#004087"
     frame_color = "#abcdf1"
     timeout = 20
 
 [urgency_critical]
     background = "#fcedea"
-    foreground = "#333c48"
+    foreground = "#791600"
     frame_color = "#f5c5bb"
     timeout = 0
 
