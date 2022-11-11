@@ -40,26 +40,26 @@ I primarily use:
 ## Details
 
 ```bash
-                   '                      amf@arTPad
-                  'o'                     ----------
-                 'ooo'                    OS: Artix Linux x86_64
-                'ooxoo'                   Host: 20ASA0M100 ThinkPad L440
-               'ooxxxoo'                  Kernel: 6.0.2-artix1-1.1
-              'oookkxxoo'                 Uptime: 1 day, 16 hours, 51 mins
-             'oiioxkkxxoo'                Packages: 1655 (pacman)
-            ':;:iiiioxxxoo'               Shell: zsh 5.9
-               `'.;::ioxxoo'              Resolution: 1366x768 @ 60.00Hz
-          '-.      `':;jiooo'             WM: dwm
-         'oooio-..     `'i:io'            Theme: Adwaita [GTK2/3]
-        'ooooxxxxoio:,.   `'-;'           Icons: Adwaita [GTK2/3]
-       'ooooxxxxxkkxoooIi:-.  `'          Terminal: st
-      'ooooxxxxxkkkkxoiiiiiji'            Terminal Font: Fantasque Sans Mono
-     'ooooxxxxxkxxoiiii:'`     .i'        CPU: Intel i7-4600M (4) @ 3.600GHz [60.0°C]
-    'ooooxxxxxoi:::'`       .;ioxo'       GPU: Intel 4th Gen Core Processor
-   'ooooxooi::'`         .:iiixkxxo'      Memory: 4289MiB / 7846MiB (54%)
-  'ooooi:'`                `'';ioxxo'     CPU Usage: 15%
- 'i:'`                          '':io'
-'`                                   `'
+                   '                       amf@arTPad
+                  'o'                      ----------
+                 'ooo'                     OS: Artix Linux x86_64
+                'ooxoo'                    Host: 20ASA0M100 ThinkPad L440
+               'ooxxxoo'                   Kernel: 6.0.7-artix1-1
+              'oookkxxoo'                  Uptime: 1 day, 5 hours, 14 mins
+             'oiioxkkxxoo'                 Packages: 1813 (pacman)
+            ':;:iiiioxxxoo'                Shell: zsh 5.9
+               `'.;::ioxxoo'               Resolution: 1366x768 @ 60Hz
+          '-.      `':;jiooo'              WM: dwm (X11)
+         'oooio-..     `'i:io'             Theme: Adwaita-dark [GTK3/4]
+        'ooooxxxxoio:,.   `'-;'            Icons: Nordzy-dark [GTK3/4]
+       'ooooxxxxxkkxoooIi:-.  `'           Font: FantasqueSansMono Nerd Font Mono (10pt) [GTK3/4]
+      'ooooxxxxxkkkkxoiiiiiji'             Cursor: phinger-cursors-light
+     'ooooxxxxxkxxoiiii:'`     .i'         Terminal: st
+    'ooooxxxxxoi:::'`       .;ioxo'        CPU: Intel Core i7-4600M (4) @ 3.6GHz
+   'ooooxooi::'`         .:iiixkxxo'       GPU: Intel 4th Gen Core Processor Integrated Graphics Controller
+  'ooooi:'`                `'';ioxxo'      Memory: 3239MiB / 7846MiB (41%)
+ 'i:'`                          '':io'     Disk (/): 17.5 GB / 63.4GiB (27%)
+'`                                   `'    Disk (/home): 36.5 GB / 48.9GiB (74%)
 ```
 
 <!-- ## Installation -->
