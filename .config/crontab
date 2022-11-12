@@ -3,20 +3,15 @@ SHELL=/usr/bin/bash
 MAILTO=cronlog
 
 # Update Databases
-0 0 * * * /usr/bin/sudo /usr/bin/updatedb
-0 0 * * * /usr/bin/sudo /usr/bin/mandb
+0 0 * * * $HOME/.local/sbin/cronie/cr-update-databases
 
 # Cronie Directory
 */5 * * * *  $HOME/.local/sbin/cronie/cr-sync-mail
 30 23 */6 * *	$HOME/.local/sbin/cronie/cr-update-pacman
-# 0,50 * * * *  $HOME/.local/sbin/cronie/cr-pomodoro
-# 0 6 * * *	    $HOME/.local/sbin/cronie/cr-quote-ar
 
 # Backups
-0 0 * * * /usr/bin/crontab -l > $HOME/.config/crontab
+0 0 * * * $HOME/.local/sbin/cronie/cr-backup-crontab
+0 0 * * * $HOME/.local/sbin/cronie/cr-sync-etc
 
 # RSS Feed
-0 * * * * /usr/bin/newsboat -x reload
-
-# Test
-* * * * *  $HOME/.local/sbin/cronie/cr-gpg-keypass-test
+0 * * * * $HOME/.local/sbin/cronie/cr-reload-newsboat
