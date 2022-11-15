@@ -28,5 +28,6 @@
 	"SaveWindowLayout": true,
 	"LeftProportion": 5,
 	"Transparent": true,
-	"PackageColumnWidth": 0
+	"PackageColumnWidth": 0,
+	"EnableAutoSuggest": false
 }

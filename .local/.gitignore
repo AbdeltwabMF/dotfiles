@@ -3,3 +3,4 @@ lib
 src
 state
 include
+pipx

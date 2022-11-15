@@ -1,8 +1,5 @@
-.android
 .cache
-.dbus
 .librewolf
 .pki
-.zoom
 .ssh
 vault

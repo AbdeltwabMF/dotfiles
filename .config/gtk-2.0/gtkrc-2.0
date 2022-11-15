@@ -1,3 +1,4 @@
+include "/home/amf/.gtkrc-2.0.mine"
 gtk-theme-name="Adwaita-dark"
 gtk-icon-theme-name="Nordzy-dark"
 gtk-font-name="FantasqueSansMono Nerd Font Mono 10"
