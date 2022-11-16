@@ -15,3 +15,6 @@ MAILTO=cronlog
 
 # RSS Feed
 0 * * * * $HOME/.local/sbin/cronie/cr-reload-newsboat
+
+# Update Encrypted Files
+0 12 * * *	$HOME/.local/sbin/cronie/cr-update-encrypted-git-files

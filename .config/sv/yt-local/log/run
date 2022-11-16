@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+#
+#
+
+exec svlogd -tt /var/log/yt-local
