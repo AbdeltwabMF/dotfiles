@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+#
+#
+
+# redirects all stderr output to stdout
+exec 2>&1
+
+exec chpst -u amf mpd --no-daemon

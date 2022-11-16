@@ -7,7 +7,6 @@
 [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env" ]] &&
   source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env"
 
-pgrep mpd || mpd
 ssh-add
 
 if pacman -Qs libxft-bgra > /dev/null 2>&1; then
