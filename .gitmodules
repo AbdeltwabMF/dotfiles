@@ -25,12 +25,6 @@
 [submodule ".local/share/wallpapers"]
 	path = .local/share/wallpapers
 	url = git@github.com:AbdeltwabMF/wallpapers.git
-[submodule ".local/opt/peda"]
-	path = .local/opt/peda
-	url = https://github.com/longld/peda.git
 [submodule ".local/sbin"]
 	path = .local/sbin
 	url = git@github.com:AbdeltwabMF/scripts.git
-[submodule ".local/share/zpm"]
-	path = .local/share/zpm
-	url = https://github.com/zpm-zsh/zpm.git
