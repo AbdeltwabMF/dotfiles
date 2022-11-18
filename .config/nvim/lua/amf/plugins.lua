@@ -128,6 +128,15 @@ return require("packer").startup({
 				require("neoscroll").setup({ hide_cursor = false })
 			end,
 		})
+		use({
+			"ghillb/cybu.nvim",
+			branch = "main", -- timely updates
+			-- branch = "v1.x", -- won't receive breaking changes
+			requires = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" }, -- optional for icon support
+			config = function()
+				require("amf.plugins.cybu")
+			end,
+		})
 
 		-- LSP
 		use({
@@ -170,6 +179,28 @@ return require("packer").startup({
 			"lervag/vimtex",
 			config = function()
 				require("amf.plugins.vimtex")
+			end,
+		})
+		use({
+			"jghauser/papis.nvim",
+			after = { "telescope.nvim", "nvim-cmp" },
+			requires = {
+				"kkharji/sqlite.lua",
+				"nvim-lua/plenary.nvim",
+				"MunifTanjim/nui.nvim",
+				"nvim-treesitter/nvim-treesitter",
+			},
+			rocks = {
+				{
+					"lyaml",
+					-- If using macOS or Linux, you may need to install the `libyaml` package.
+					-- If you install libyaml with homebrew you will need to set the YAML_DIR
+					-- to the location of the homebrew installation of libyaml e.g.
+					-- env = { YAML_DIR = '/opt/homebrew/Cellar/libyaml/0.2.5/' },
+				},
+			},
+			config = function()
+				require("amf.plugins.papis")
 			end,
 		})
 
@@ -217,7 +248,22 @@ return require("packer").startup({
 				require("amf.plugins.pairs")
 			end,
 		})
-		use({ "github/copilot.vim" })
+		use({
+			"zbirenbaum/copilot.lua",
+			event = "InsertEnter",
+			config = function()
+				vim.schedule(function()
+					require("amf.plugins.copilot")
+				end)
+			end,
+		})
+		use({
+			"zbirenbaum/copilot-cmp",
+			after = { "copilot.lua" },
+			config = function()
+				require("copilot_cmp").setup()
+			end,
+		})
 
 		-- Null-ls
 		use({
@@ -270,6 +316,13 @@ return require("packer").startup({
 			{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
 			{ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
 			{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+			{
+				"nvim-treesitter/nvim-treesitter-context",
+				config = function()
+					require("treesitter-context").setup({})
+				end,
+				after = "nvim-treesitter",
+			},
 		})
 
 		-- Editing to the MOON
@@ -339,6 +392,7 @@ return require("packer").startup({
 				after = "telescope.nvim",
 			},
 		})
+
 		-- Build system
 		use({
 			"pianocomposer321/yabs.nvim",
@@ -346,6 +400,28 @@ return require("packer").startup({
 				require("amf.plugins.yabs")
 			end,
 			requires = { "nvim-lua/plenary.nvim" },
+		})
+
+		-- Testing
+		use({
+			"nvim-neotest/neotest",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"antoinemadec/FixCursorHold.nvim",
+				"haydenmeade/neotest-jest",
+			},
+		})
+
+		-- Neorg
+		use({
+			"nvim-neorg/neorg",
+			tag = "*",
+			config = function()
+				require("amf.plugins.yabs")
+			end,
+			requires = "nvim-lua/plenary.nvim",
+			requires = "nvim-neorg/neorg-telescope", -- Be sure to pull in the repo
 		})
 	end,
 	config = {
