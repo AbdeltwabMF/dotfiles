@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#
+#
+#
+
+exec chpst -u amf:transmission transmission-daemon -f --log-error

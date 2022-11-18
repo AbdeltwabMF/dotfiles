@@ -34,12 +34,12 @@ subtitles_language = 'en'
 # 0 - Related videos disabled
 # 1 - Related videos always shown
 # 2 - Related videos hidden; shown by clicking a button
-related_videos_mode = 1
+related_videos_mode = 2
 
 # 0 - Video comments disabled
 # 1 - Video comments always shown
 # 2 - Video comments hidden; shown by clicking a button
-comments_mode = 1
+comments_mode = 2
 
 enable_comment_avatars = True
 

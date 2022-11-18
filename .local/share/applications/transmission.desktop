@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=A bittorrent client
+Exec=/home/amf/.local/sbin/general/tm-add-torrent %U
