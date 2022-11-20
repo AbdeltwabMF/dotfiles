@@ -252,7 +252,9 @@ return require("packer").startup({
 			"zbirenbaum/copilot.lua",
 			event = "VimEnter",
 			config = function()
-				require("amf.plugins.copilot")
+				vim.defer_fn(function()
+					require("amf.plugins.copilot")
+				end, 100)
 			end,
 		})
 		use({
