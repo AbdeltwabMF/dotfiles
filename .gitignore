@@ -1,5 +1,10 @@
+# Cache files
 .cache
 .librewolf
 .pki
-.ssh
+
+# User-specific files
 vault
+
+# SSH keys
+.ssh
