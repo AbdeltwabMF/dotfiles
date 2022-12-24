@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+#
+#
+
+exec
+if pgrep wireplumber; then
+  exit 0
+else
+  exit 1
+fi

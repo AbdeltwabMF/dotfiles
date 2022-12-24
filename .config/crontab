@@ -3,7 +3,7 @@ SHELL=/usr/bin/bash
 MAILTO=cronlog
 
 # Update Databases
-0 0 * * * $HOME/.local/sbin/cronie/cr-update-databases
+0 * * * * $HOME/.local/sbin/cronie/cr-update-databases
 
 # Cronie Directory
 */5 * * * *  $HOME/.local/sbin/cronie/cr-sync-mail
@@ -17,4 +17,4 @@ MAILTO=cronlog
 0 * * * * $HOME/.local/sbin/cronie/cr-reload-newsboat
 
 # Update Encrypted Files
-0 12 * * *	$HOME/.local/sbin/cronie/cr-update-encrypted-git-files
+0 * * * *	$HOME/.local/sbin/cronie/cr-update-encrypted-git-files

@@ -14,26 +14,55 @@ session=$1
 
 installed() {
   case "$1" in
+    i3 | i3wm)
+      if which i3 > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
     dwm)
-      if which dwm >/dev/null 2>&1; then
-        echo ok; else echo no;
-      fi ;;
-    i3|i3wm)
-      if which i3 >/dev/null 2>&1; then
-        echo ok; else echo no;
-      fi ;;
+      if which dwm > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
+    budgie)
+      if which budgie-desktop > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
+    gnome)
+      if which gnome-session > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
     mate)
-      if which mate-session >/dev/null 2>&1; then
-        echo ok; else echo no;
-      fi ;;
+      if which mate-session > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
     kde)
-      if which startplasma-x11 >/dev/null 2>&1; then
-        echo ok; else echo no;
-      fi ;;
-    xfce|xcfe4)
-      if which startxfce4 >/dev/null 2>&1; then
-        echo ok; else echo no;
-      fi ;;
+      if which startplasma-x11 > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
+    xfce | xcfe4)
+      if which startxfce4 > /dev/null 2>&1; then
+        echo ok
+      else
+        echo no
+      fi
+      ;;
     *) echo no ;;
   esac
 }
@@ -53,17 +82,20 @@ fi
 
 # Start Window Manager here
 case ${session} in
-  i3|i3wm) exec i3 ;;
+  i3 | i3wm) exec i3 ;;
+  budgie) exec budgie-desktop ;;
+  gnome) exec gnome-session ;;
   mate) exec mate-session ;;
   kde) exec startplasma-x11 ;;
-  xfce|xfce4) exec startxfce4 ;;
+  xfce | xfce4) exec startxfce4 ;;
   dwm)
     # Remember that lines following a command using exec would be ignored.
     # For example, to start xscreensaver in the background and then start openbox, use the following:
     # xscreensaver &
     # exec openbox-session
     ${STATUSBAR} &
-    exec dwm ;;
+    exec dwm
+    ;;
   # No known session, try to run it as command
   *) exec "$session" ;;
 esac
