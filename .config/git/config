@@ -194,9 +194,9 @@
 	rebase = true
 
 [user]
-	email = abdeltwab.m.fakhry@protonmail.com
-	name = Abd El-Twab M. Fakhry
-	signingkey = 0xEF99158DC5D4CAE5
+	email = dev@abdeltwab.xyz
+	name = Abdeltwab
+	signingkey = 0x014D5B8924E0FD25
 
 [init]
 	defaultBranch = main

@@ -3,8 +3,10 @@
 .librewolf
 .pki
 
-# User-specific files
-vault
-
 # SSH keys
 .ssh
+
+.dbus
+.Xauthority
+.xinitrc
+.gnupg
