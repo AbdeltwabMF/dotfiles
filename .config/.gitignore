@@ -1,7 +1,6 @@
 Android*
 Brave*
 cargo
-go/
 coc
 conan
 configstore
@@ -84,3 +83,4 @@ dleyna-renderer-service.conf
 evolution/
 ibus/
 rncbc.org/
+go/

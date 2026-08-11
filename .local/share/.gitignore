@@ -1,5 +1,4 @@
 Android*
-pki
 bitmonero
 buidler-nodejs
 calcurse
@@ -74,3 +73,4 @@ gnome-settings-daemon/
 gnome-shell/
 keyrings/
 sounds/__custom/
+pki

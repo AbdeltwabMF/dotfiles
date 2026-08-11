@@ -6,7 +6,7 @@
 # SSH keys
 .ssh
 
+.gnupg
 .dbus
 .Xauthority
 .xinitrc
-.gnupg
